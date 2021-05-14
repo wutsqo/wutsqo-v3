@@ -40,9 +40,7 @@ const ReadingList = () => {
     <Layout>
       <div className="max-w-screen-lg mx-auto p-2">
         <div>
-          <h1 className="text-4xl text-center p-4 font-semibold">
-            My Reading List
-          </h1>
+          <h1 className="text-4xl text-center p-4 mt-10">My Reading List</h1>
         </div>
         <div className="flex justify-center">
           <input

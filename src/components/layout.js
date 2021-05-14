@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div>
+      <div className="pt-10">
         <main className="min-h-screen">{children}</main>
         <footer className="text-center p-8 mt-10 ">
           © {new Date().getFullYear()}, Muhammad Urwatil Wutsqo

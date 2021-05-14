@@ -26,7 +26,10 @@ const IndexPage = () => {
   return (
     <Layout>
       <SEO title="Home" />
-      <div className="max-w-screen-md mx-auto pt-32 p-4">
+      <div
+        className="max-w-screen-md mx-auto p-4"
+        style={{ paddingTop: "50vh" }}
+      >
         <h2 className="text-2xl sm:text-3xl font-semibold">Hello!</h2>
         <h1 className="text-3xl sm:text-5xl font-semibold">
           I'm{" "}
@@ -38,7 +41,9 @@ const IndexPage = () => {
           />
         </h1>
         <div className="text-sm sm:text-base ">
-          <div className="mt-28 font-semibold">Find me on</div>
+          <div className="font-semibold" style={{ marginTop: "10vh" }}>
+            Find me on
+          </div>
           <a href="mailto:wutsqo@ristek.cs.ui.ac.id">email</a> •{" "}
           <a
             href="https://linkedin.com/in/wutsqo"

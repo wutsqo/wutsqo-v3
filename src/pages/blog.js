@@ -35,7 +35,7 @@ const Blog = () => {
           </div>
         );
       })} */}
-      <p className="text-4xl max-w-screen-md text-center mx-auto">
+      <p className="text-4xl max-w-screen-md text-center p-6 mt-10 mx-auto">
         Coming Soon
       </p>
     </Layout>
