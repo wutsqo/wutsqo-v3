@@ -99,11 +99,11 @@ const ReadingList = () => {
                         className="text-center text-black text-sm rounded mt-1"
                         style={{
                           backgroundColor:
-                            book.status === "reviewed"
+                            book.status === 4
                               ? "#7FCCEC"
-                              : book.status === "rated"
+                              : book.status === 3
                               ? "#9AE6E1"
-                              : book.status === "reading"
+                              : book.status === 2
                               ? "#FBE7BC"
                               : "#D4F9E5",
                         }}
