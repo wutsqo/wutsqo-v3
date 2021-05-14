@@ -4,6 +4,9 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 import StarRatings from "react-star-ratings";
 import tw from "twin.macro";
+import { FaRegClock } from "@react-icons/all-files/fa/FaRegClock";
+import { FaCalendarAlt } from "@react-icons/all-files/fa/FaCalendarAlt";
+import { FaHashtag } from "@react-icons/all-files/fa/FaHashtag";
 
 export const query = graphql`
   query($slug: String!) {
@@ -24,7 +27,7 @@ export const query = graphql`
   }
 `;
 
-const BookTD = tw.td`py-2 pr-6 text-left`;
+const BookTD = tw.td`py-2 pr-6 text-left text-sm`;
 
 const BookTemplate = (props) => {
   const fm = props.data.markdownRemark.frontmatter;
@@ -61,16 +64,30 @@ const BookTemplate = (props) => {
             <table className="table-auto bg-white rounded">
               <tbody className="text-gray-600 font-light">
                 <tr>
-                  <BookTD>Month read</BookTD>
+                  <BookTD>
+                    <FaRegClock />
+                  </BookTD>
+                  <BookTD>
+                    {props.data.markdownRemark.timeToRead == 1
+                      ? `${props.data.markdownRemark.timeToRead} minute read`
+                      : `${props.data.markdownRemark.timeToRead} minutes read`}
+                  </BookTD>
+                </tr>
+                <tr>
+                  <BookTD>
+                    <FaCalendarAlt />
+                  </BookTD>
                   <BookTD>{fm.dateFinish ? `${fm.dateFinish}` : ""}</BookTD>
                 </tr>
                 <tr>
-                  <BookTD>Tags</BookTD>
+                  <BookTD>
+                    <FaHashtag />
+                  </BookTD>
                   <BookTD>
                     {fm.tags
                       ? fm.tags.map((tag) => {
                           return (
-                            <button className="bg-gray-200 mr-2 px-2 py-1 text-sm rounded-lg">
+                            <button className="bg-gray-200 mr-2 px-2 py-1 mb-1 text-xs rounded-lg">
                               {tag}
                             </button>
                           );
