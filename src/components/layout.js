@@ -27,9 +27,8 @@ const Layout = ({ children }) => {
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div>
         <main className="min-h-screen">{children}</main>
-        <footer className="text-center p-8 mt-10 bg-gray-200">
-          © {new Date().getFullYear()}, Muhammad Urwatil Wutsqo <br />
-          Made from scratch using Gatsby.js and TailwindCSS
+        <footer className="text-center p-8 mt-10 ">
+          © {new Date().getFullYear()}, Muhammad Urwatil Wutsqo
         </footer>
       </div>
     </>

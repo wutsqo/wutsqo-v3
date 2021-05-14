@@ -45,6 +45,7 @@ const BookTemplate = (props) => {
             <StarRatings
               rating={fm.bookRating}
               starRatedColor="#FF9529"
+              starEmptyColor="#FFFFFF"
               starDimension="25px"
               starSpacing="1px"
             />
