@@ -69,7 +69,10 @@ const ReadingList = () => {
                   className="my-1 px-1 overflow-hidden w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6"
                   key={id}
                 >
-                  <Link to={`/reads/${edge.node.fields.slug}`}>
+                  <Link
+                    to={`/reads/${edge.node.fields.slug}`}
+                    style={{ textDecoration: "none" }}
+                  >
                     <div className="mb-2 p-2 dark:bg-gray-800 shadow rounded">
                       <div className="relative h-60 w-full rounded">
                         <div
