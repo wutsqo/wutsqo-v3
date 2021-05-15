@@ -61,8 +61,8 @@ const BookTemplate = (props) => {
         <div>
           <div className="mt-5 max-w-screen-sm mx-auto px-4">
             <hr />
-            <table className="table-auto bg-white rounded">
-              <tbody className="text-gray-600 font-light">
+            <table className="table-auto rounded">
+              <tbody className="text-gray-700 dark:text-gray-200 font-light">
                 <tr>
                   <BookTD>
                     <FaRegClock />
@@ -87,7 +87,7 @@ const BookTemplate = (props) => {
                     {fm.tags
                       ? fm.tags.map((tag) => {
                           return (
-                            <button className="bg-gray-200 mr-2 px-2 py-1 mb-1 text-xs rounded-lg">
+                            <button className="bg-gray-200 dark:bg-gray-800 mr-2 px-2 py-1 mb-1 text-xs rounded-lg">
                               {tag}
                             </button>
                           );

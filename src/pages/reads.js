@@ -46,7 +46,7 @@ const ReadingList = () => {
           <input
             type="text"
             placeholder="Search by title or author"
-            className="px-4 py-2 text-center mb-8 border-2 rounded-lg w-full focus:outline-none focus:ring-2 focus:border-transparent hover:w-96 transition-all"
+            className="px-4 py-2 text-center dark:bg-gray-800 mb-8 shadow rounded-lg w-full mx-2 focus:outline-none focus:ring-2 focus:border-transparent hover:w-96 transition-all"
             onChange={(e) =>
               debounce(
                 500,
@@ -70,7 +70,7 @@ const ReadingList = () => {
                   key={id}
                 >
                   <Link to={`/reads/${edge.node.fields.slug}`}>
-                    <div className="mb-2 p-2 shadow rounded">
+                    <div className="mb-2 p-2 dark:bg-gray-800 shadow rounded">
                       <div className="relative h-60 w-full rounded">
                         <div
                           className="absolute inset-0 bg-cover bg-center z-0 rounded"

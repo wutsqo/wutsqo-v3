@@ -16,16 +16,7 @@ body {
 }
 
 a {
-  color: #0645ad;
-  text-decoration: none;
-}
-
-a:hover {
-  color: #06e;
-}
-
-a:active {
-  color: #faa700;
+  text-decoration: underline;
 }
 
 a:focus {

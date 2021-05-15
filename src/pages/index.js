@@ -27,7 +27,7 @@ const IndexPage = () => {
     <Layout>
       <SEO title="Home" />
       <div
-        className="max-w-screen-md mx-auto p-4"
+        className="max-w-screen-md mx-auto p-4 dark:text-gray-100"
         style={{ paddingTop: "50vh" }}
       >
         <h2 className="text-2xl sm:text-3xl font-semibold">Hello!</h2>
