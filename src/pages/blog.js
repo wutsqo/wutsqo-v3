@@ -2,6 +2,7 @@ import * as React from "react";
 
 import { graphql, Link, useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
+import PageHeading from "../components/layouts/heading";
 
 const Blog = () => {
   const data = useStaticQuery(graphql`
@@ -35,9 +36,7 @@ const Blog = () => {
           </div>
         );
       })} */}
-      <p className="text-4xl max-w-screen-md text-center p-6 mt-10 mx-auto">
-        Coming Soon
-      </p>
+      <PageHeading title="Coming Soon" />
     </Layout>
   );
 };
