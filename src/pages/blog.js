@@ -1,5 +1,5 @@
 import * as React from "react";
-
+import SEO from "../components/seo";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
 import PageHeading from "../components/layouts/heading";
@@ -36,7 +36,8 @@ const Blog = () => {
           </div>
         );
       })} */}
-      <PageHeading title="Coming Soon" />
+      <SEO title="Blog" />
+      <PageHeading title="Blog" />
     </Layout>
   );
 };

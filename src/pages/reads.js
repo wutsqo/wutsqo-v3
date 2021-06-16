@@ -39,7 +39,7 @@ const ReadingList = () => {
 
   return (
     <Layout>
-      <div className="max-w-screen-lg mx-auto p-2">
+      <div className="max-w-screen-lg mx-auto px-2">
         <PageHeading title="My Reading List" />
         <div className="flex justify-center">
           <input
