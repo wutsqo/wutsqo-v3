@@ -2,8 +2,9 @@ import * as React from "react";
 import tw from "twin.macro";
 import StarRatings from "react-star-ratings";
 import { Link } from "gatsby";
+import { GatsbyImage } from "gatsby-plugin-image";
 
-const BookCard = ({ data, link, id }) => {
+const BookCard = ({ data, link }) => {
   const Container = tw.div`mb-2 p-2 dark:bg-gray-800 shadow rounded`;
   const ThumbContainer = tw.div`relative h-60 w-full rounded`;
   const ThumbCover = tw.div`absolute inset-0 bg-cover bg-center z-0 rounded`;
@@ -32,18 +33,22 @@ const BookCard = ({ data, link, id }) => {
       statusText = "To-read";
       break;
   }
-
   return (
-    <div
-      className="my-1 px-1 overflow-hidden w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6"
-      key={id}
-    >
+    <div>
       <Link to={link} style={{ textDecoration: "none" }}>
         <Container>
           <ThumbContainer>
-            <ThumbCover
-              style={{ backgroundImage: `url(${data.bookCover})` }}
-            ></ThumbCover>
+            <ThumbCover>
+              {data.cover ? (
+                <GatsbyImage
+                  image={data.cover.childImageSharp.gatsbyImageData}
+                  alt={data.bookTitle}
+                  className="h-full"
+                />
+              ) : (
+                "no image"
+              )}
+            </ThumbCover>
             <ThumbOverlay>
               <div>{data.bookTitle}</div>
               <div>

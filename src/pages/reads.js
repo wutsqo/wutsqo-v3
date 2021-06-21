@@ -22,7 +22,11 @@ const ReadingList = () => {
             frontmatter {
               bookTitle
               bookAuthor
-              bookCover
+              cover {
+                childImageSharp {
+                  gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+                }
+              }
               bookRating
               status
             }
@@ -65,11 +69,16 @@ const ReadingList = () => {
             )
             .map((edge, id) => {
               return (
-                <BookCard
-                  data={edge.node.frontmatter}
-                  link={`/reads/${edge.node.fields.slug}`}
-                  id={id}
-                />
+                <div
+                  className="my-1 px-1 overflow-hidden w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6"
+                  key={id}
+                >
+                  <BookCard
+                    data={edge.node.frontmatter}
+                    link={`/reads/${edge.node.fields.slug}`}
+                    id={id}
+                  />
+                </div>
               );
             })}
         </div>

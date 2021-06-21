@@ -7,6 +7,7 @@ import tw from "twin.macro";
 import { FaRegClock } from "@react-icons/all-files/fa/FaRegClock";
 import { FaCalendarAlt } from "@react-icons/all-files/fa/FaCalendarAlt";
 import { FaHashtag } from "@react-icons/all-files/fa/FaHashtag";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export const query = graphql`
   query($slug: String!) {
@@ -16,7 +17,15 @@ export const query = graphql`
       frontmatter {
         bookTitle
         bookAuthor
-        bookCover
+        cover {
+          childImageSharp {
+            gatsbyImageData(
+              layout: FULL_WIDTH
+              placeholder: BLURRED
+              transformOptions: { cropFocus: ATTENTION }
+            )
+          }
+        }
         bookRating
         dateFinish(formatString: "MMM YYYY")
         tags
@@ -34,27 +43,36 @@ const BookTemplate = (props) => {
   return (
     <Layout>
       <SEO title={fm.bookTitle} />
-      <div className="relative w-full" style={{ height: "50vh" }}>
-        <div
-          className="absolute inset-0 bg-cover bg-center z-0 rounded"
-          style={{ backgroundImage: `url(${fm.bookCover})` }}
-        ></div>
-        <div className="bg-gradient-to-t from-black absolute inset-0 z-10 px-4 md:px-10 py-5 text-white  flex flex-col justify-end ">
-          <h2 className="text-4xl font-semibold text-opacity-100">
-            {fm.bookTitle}
-          </h2>
-          <h4 className="text-2xl">by {fm.bookAuthor}</h4>
-          {fm.bookRating ? (
-            <StarRatings
-              rating={fm.bookRating}
-              starRatedColor="#FF9529"
-              starEmptyColor="#FFFFFF"
-              starDimension="25px"
-              starSpacing="1px"
+      <div className="relative w-full" style={{ height: "60vh" }}>
+        <div className="absolute inset-0 bg-cover bg-center z-0 rounded">
+          {fm.cover ? (
+            <GatsbyImage
+              image={fm.cover.childImageSharp.gatsbyImageData}
+              alt={fm.bookTitle}
+              className="h-full"
             />
           ) : (
-            "reading in progress"
+            "no cover"
           )}
+        </div>
+        <div className="bg-gradient-to-t from-black absolute inset-0 z-10 px-4 md:px-10 py-5 text-white flex flex-col justify-end ">
+          <div className="max-w-screen-sm w-full mx-auto sm:px-4">
+            <h2 className="text-4xl font-semibold text-opacity-100">
+              {fm.bookTitle}
+            </h2>
+            <h4 className="text-2xl">by {fm.bookAuthor}</h4>
+            {fm.bookRating ? (
+              <StarRatings
+                rating={fm.bookRating}
+                starRatedColor="#FF9529"
+                starEmptyColor="#FFFFFF"
+                starDimension="25px"
+                starSpacing="1px"
+              />
+            ) : (
+              "reading in progress"
+            )}
+          </div>
         </div>
       </div>
       <div>

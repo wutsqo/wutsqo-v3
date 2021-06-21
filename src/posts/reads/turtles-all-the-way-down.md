@@ -3,6 +3,7 @@ bookTitle: "Turtles All The Way Down"
 bookAuthor: "John Green"
 bookRating: 4
 bookCover: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1523440333l/39800802._SX318_.jpg"
+cover: "./cover/turtles-all-the-way-down.jpg"
 dateStart: "2018-10-13"
 dateFinish: "2018-10-20"
 tags: ["Fiction", "Young Adult"]
