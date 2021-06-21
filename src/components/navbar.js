@@ -1,13 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import { Link } from "gatsby";
 import ThemeToggle from "./themetoggle";
+import { debounce, throttle } from "throttle-debounce";
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const [visible, setVisible] = useState(true);
+
+  const handleScroll = debounce(100, () => {
+    const currentScrollPos = window.pageYOffset;
+
+    setVisible(
+      (prevScrollPos > currentScrollPos &&
+        prevScrollPos - currentScrollPos > 70) ||
+        currentScrollPos < 250
+    );
+    setIsOpen(false);
+
+    setPrevScrollPos(currentScrollPos);
+  });
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [prevScrollPos, visible, handleScroll]);
+
   return (
     <div>
-      <nav className="fixed w-full z-50 bg-white text-gray-900 dark:text-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur-lg shadow">
+      {/* <nav className="fixed w-full z-50 bg-white text-gray-900 dark:text-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur-lg shadow"> */}
+      <nav
+        className={`fixed w-full z-50 bg-white text-gray-900 dark:text-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-80 backdrop-filter backdrop-blur-lg shadow ${
+          visible
+            ? "top-0 transition duration-500"
+            : "transform -translate-y-96 transition duration-1000"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
