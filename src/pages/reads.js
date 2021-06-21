@@ -4,6 +4,7 @@ import { graphql, Link, useStaticQuery } from "gatsby";
 import { debounce, throttle } from "throttle-debounce";
 import BookCard from "../components/reads/bookcard";
 import PageHeading from "../components/layouts/heading";
+import SEO from "../components/seo";
 
 const ReadingList = () => {
   const [search, setSearch] = useState("");
@@ -39,6 +40,7 @@ const ReadingList = () => {
 
   return (
     <Layout>
+      <SEO title="Reading List" />
       <div className="max-w-sm sm:max-w-xl md:max-w-3xl lg:max-w-5xl mx-auto px-2">
         <PageHeading title="My Reading List" />
         <div className="flex justify-center">
