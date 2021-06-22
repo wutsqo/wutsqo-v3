@@ -3,7 +3,7 @@ import Layout from "../components/layout";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import { debounce, throttle } from "throttle-debounce";
 import BookCard from "../components/reads/bookcard";
-import PageHeading from "../components/layouts/heading";
+import PageHeading from "../components/heading";
 import SEO from "../components/seo";
 
 const ReadingList = () => {

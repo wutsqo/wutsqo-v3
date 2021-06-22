@@ -2,7 +2,7 @@ import * as React from "react";
 import SEO from "../components/seo";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
-import PageHeading from "../components/layouts/heading";
+import PageHeading from "../components/heading";
 
 const Blog = () => {
   const data = useStaticQuery(graphql`
