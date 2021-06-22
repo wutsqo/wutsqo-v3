@@ -11,8 +11,7 @@ const AboutPage = () => {
         description="I'm a Computer Science student currently living in Jakarta, Indonesia."
       />
       <PageHeading title="About Me" />
-      <div className="max-w-xl mx-auto px-4">
-        <hr />
+      <div className="max-w-xl mx-auto px-4 prose prose-quoteless dark:prose-dark">
         <p>
           I'm a Computer Science student currently living in Jakarta, Indonesia.
           I like reading books and literature about fiction, self-help,
@@ -25,8 +24,7 @@ const AboutPage = () => {
           you want to talk about anything, or just simply want to have a new
           friend.
         </p>
-        <hr />
-        <i>
+        <blockquote>
           <p>
             In the midst of winter, I found there was, within me, an invincible
             summer.
@@ -36,8 +34,8 @@ const AboutPage = () => {
             world pushes against me, within me, there’s something stronger –
             something better, pushing right back.
           </p>
-        </i>
-        <p className="text-right mr-4">― Albert Camus</p>
+        </blockquote>
+        <p className="mr-4 text-right">― Albert Camus</p>
       </div>
     </Layout>
   );

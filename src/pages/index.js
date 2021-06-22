@@ -40,7 +40,7 @@ const IndexPage = () => {
             noOverflow={true}
           />
         </h1>
-        <div className="text-sm sm:text-base ">
+        <div className="text-sm sm:text-base prose dark:prose-dark">
           <div className="font-semibold" style={{ marginTop: "10vh" }}>
             Find me on
           </div>

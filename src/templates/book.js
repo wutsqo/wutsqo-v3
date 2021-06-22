@@ -43,7 +43,7 @@ const BookTemplate = (props) => {
   return (
     <Layout>
       <SEO title={fm.bookTitle} />
-      <div className="relative w-full" style={{ height: "60vh" }}>
+      <div className="relative w-full -mt-10" style={{ height: "75vh" }}>
         <div className="absolute inset-0 bg-cover bg-center z-0 rounded">
           {fm.cover ? (
             <GatsbyImage
@@ -117,6 +117,7 @@ const BookTemplate = (props) => {
             </table>
             <hr />
             <div
+              className="py-6 prose prose-quoteless dark:prose-dark"
               dangerouslySetInnerHTML={{
                 __html: props.data.markdownRemark.html,
               }}
