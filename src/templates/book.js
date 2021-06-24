@@ -8,6 +8,7 @@ import { FaRegClock } from "@react-icons/all-files/fa/FaRegClock";
 import { FaCalendarAlt } from "@react-icons/all-files/fa/FaCalendarAlt";
 import { FaHashtag } from "@react-icons/all-files/fa/FaHashtag";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { Disqus } from "gatsby-plugin-disqus";
 
 export const query = graphql`
   query($slug: String!) {
@@ -55,8 +56,8 @@ const BookTemplate = (props) => {
             "no cover"
           )}
         </div>
-        <div className="bg-gradient-to-t from-black absolute inset-0 z-10 px-4 md:px-10 py-5 text-white flex flex-col justify-end ">
-          <div className="max-w-screen-md w-full mx-auto sm:px-4 lg:pl-8">
+        <div className="bg-gradient-to-t from-black absolute inset-0 z-10 px-4 py-5 text-white flex flex-col justify-end ">
+          <div className="max-w-screen-sm md:max-w-screen-md w-full mx-auto sm:px-4 lg:pl-8">
             <h2 className="text-4xl font-semibold text-opacity-100">
               {fm.bookTitle}
             </h2>
@@ -122,16 +123,7 @@ const BookTemplate = (props) => {
           }}
         ></div>
 
-        <h3>Find this book on</h3>
-        <li>
-          <a
-            href={`https://www.goodreads.com/search?q=${fm.bookTitle}`}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Goodreads
-          </a>
-        </li>
+        <Disqus />
       </div>
     </Layout>
   );
