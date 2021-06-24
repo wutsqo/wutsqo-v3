@@ -56,7 +56,7 @@ const BookTemplate = (props) => {
           )}
         </div>
         <div className="bg-gradient-to-t from-black absolute inset-0 z-10 px-4 md:px-10 py-5 text-white flex flex-col justify-end ">
-          <div className="max-w-screen-sm w-full mx-auto sm:px-4">
+          <div className="max-w-screen-md w-full mx-auto sm:px-4 lg:pl-8">
             <h2 className="text-4xl font-semibold text-opacity-100">
               {fm.bookTitle}
             </h2>
@@ -75,66 +75,63 @@ const BookTemplate = (props) => {
           </div>
         </div>
       </div>
-      <div>
-        <div>
-          <div className="mt-5 max-w-screen-sm mx-auto px-4">
-            <hr />
-            <table className="table-auto rounded">
-              <tbody className="text-gray-700 dark:text-gray-200 font-light">
-                <tr>
-                  <BookTD>
-                    <FaRegClock />
-                  </BookTD>
-                  <BookTD>
-                    {props.data.markdownRemark.timeToRead == 1
-                      ? `${props.data.markdownRemark.timeToRead} minute read`
-                      : `${props.data.markdownRemark.timeToRead} minutes read`}
-                  </BookTD>
-                </tr>
-                <tr>
-                  <BookTD>
-                    <FaCalendarAlt />
-                  </BookTD>
-                  <BookTD>{fm.dateFinish ? `${fm.dateFinish}` : ""}</BookTD>
-                </tr>
-                <tr>
-                  <BookTD>
-                    <FaHashtag />
-                  </BookTD>
-                  <BookTD>
-                    {fm.tags
-                      ? fm.tags.map((tag) => {
-                          return (
-                            <button className="bg-gray-200 dark:bg-gray-800 mr-2 px-2 py-1 mb-1 text-xs rounded-lg">
-                              {tag}
-                            </button>
-                          );
-                        })
-                      : ""}
-                  </BookTD>
-                </tr>
-              </tbody>
-            </table>
-            <hr />
-            <div
-              className="py-6 prose prose-quoteless dark:prose-dark"
-              dangerouslySetInnerHTML={{
-                __html: props.data.markdownRemark.html,
-              }}
-            ></div>
 
-            <h3>Find this book on</h3>
-            <li>
-              <a
-                href={`https://www.goodreads.com/search?q=${fm.bookTitle}`}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Goodreads
-              </a>
-            </li>
-          </div>
-        </div>
+      <div className="mt-5 max-w-screen-sm md:max-w-screen-md mx-auto px-4 lg:pl-8">
+        <hr />
+        <table className="table-auto rounded">
+          <tbody className="text-gray-700 dark:text-gray-200 font-light">
+            <tr>
+              <BookTD>
+                <FaRegClock />
+              </BookTD>
+              <BookTD>
+                {props.data.markdownRemark.timeToRead == 1
+                  ? `${props.data.markdownRemark.timeToRead} minute read`
+                  : `${props.data.markdownRemark.timeToRead} minutes read`}
+              </BookTD>
+            </tr>
+            <tr>
+              <BookTD>
+                <FaCalendarAlt />
+              </BookTD>
+              <BookTD>{fm.dateFinish ? `${fm.dateFinish}` : ""}</BookTD>
+            </tr>
+            <tr>
+              <BookTD>
+                <FaHashtag />
+              </BookTD>
+              <BookTD>
+                {fm.tags
+                  ? fm.tags.map((tag) => {
+                      return (
+                        <button className="bg-gray-200 dark:bg-gray-800 mr-2 px-2 py-1 mb-1 text-xs rounded-lg">
+                          {tag}
+                        </button>
+                      );
+                    })
+                  : ""}
+              </BookTD>
+            </tr>
+          </tbody>
+        </table>
+        <hr />
+        <div
+          className="py-6 prose prose-quoteless md:prose-lg  dark:prose-dark"
+          dangerouslySetInnerHTML={{
+            __html: props.data.markdownRemark.html,
+          }}
+        ></div>
+
+        <h3>Find this book on</h3>
+        <li>
+          <a
+            href={`https://www.goodreads.com/search?q=${fm.bookTitle}`}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Goodreads
+          </a>
+        </li>
       </div>
     </Layout>
   );
