@@ -6,41 +6,44 @@ import BookCard from "../components/reads/bookcard";
 import PageHeading from "../components/heading";
 import SEO from "../components/seo";
 
-const ReadingList = () => {
-  const [search, setSearch] = useState("");
-  const data = useStaticQuery(graphql`
-    query {
-      allMarkdownRemark(
-        filter: { fields: { collection: { eq: "reads" } } }
-        sort: {
-          fields: [frontmatter___status, frontmatter___dateFinish]
-          order: [DESC, ASC]
-        }
-      ) {
-        edges {
-          node {
-            frontmatter {
-              bookTitle
-              bookAuthor
-              cover {
-                childImageSharp {
-                  gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
-                }
+export const query = graphql`
+  query bookQuery($skip: Int!, $limit: Int!) {
+    allMarkdownRemark(
+      filter: { fields: { collection: { eq: "reads" } } }
+      sort: {
+        fields: [frontmatter___status, frontmatter___dateFinish]
+        order: [DESC, ASC]
+      }
+      limit: $limit
+      skip: $skip
+    ) {
+      edges {
+        node {
+          frontmatter {
+            bookTitle
+            bookAuthor
+            cover {
+              childImageSharp {
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
               }
-              bookRating
-              status
             }
-            excerpt
-            fields {
-              slug
-            }
-            timeToRead
+            bookRating
+            status
           }
+          excerpt
+          fields {
+            slug
+          }
+          timeToRead
         }
       }
     }
-  `);
-  const nodeList = data.allMarkdownRemark.edges;
+  }
+`;
+
+const ReadingList = (props) => {
+  const [search, setSearch] = useState("");
+  const nodeList = props.data.allMarkdownRemark.edges;
 
   return (
     <Layout>

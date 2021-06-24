@@ -75,4 +75,20 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     });
   });
+
+  const bookListPage = path.resolve("./src/templates/reads.js");
+  const reads = resReads.data.allMarkdownRemark.edges;
+  const bookPerPages = 48;
+  const numPages = Math.ceil(reads.length / bookPerPages);
+
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      component: bookListPage,
+      path: i === 0 ? `/reads` : `/reads/${i + 1}`,
+      context: {
+        limit: bookPerPages,
+        skip: i * bookPerPages,
+      },
+    });
+  });
 };
