@@ -54,11 +54,33 @@ exports.createPages = async ({ graphql, actions }) => {
   const bookTemplate = path.resolve("./src/templates/book.js");
   const resReads = await graphql(`
     query {
-      allMarkdownRemark(filter: { fields: { collection: { eq: "reads" } } }) {
+      allMarkdownRemark(
+        filter: { fields: { collection: { eq: "reads" } } }
+        sort: {
+          fields: [frontmatter___status, frontmatter___dateFinish]
+          order: [DESC, ASC]
+        }
+      ) {
         edges {
           node {
             fields {
               slug
+            }
+          }
+          next {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
+            }
+          }
+          previous {
+            fields {
+              slug
+            }
+            frontmatter {
+              title
             }
           }
         }
@@ -72,6 +94,8 @@ exports.createPages = async ({ graphql, actions }) => {
       path: `/reads/${edge.node.fields.slug}`,
       context: {
         slug: edge.node.fields.slug,
+        next: edge.next,
+        previous: edge.previous,
       },
     });
   });
