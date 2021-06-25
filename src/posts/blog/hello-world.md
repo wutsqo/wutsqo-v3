@@ -1,6 +1,6 @@
 ---
 title: "Hello World"
-date: "May 12, 2021"
+date: "2021-05-12"
 author: "Muhammad Urwatil Wutsqo"
 ---
 
