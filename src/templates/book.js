@@ -16,7 +16,7 @@ export const query = graphql`
       fields: { slug: { eq: $slug }, collection: { eq: "reads" } }
     ) {
       frontmatter {
-        bookTitle
+        title
         bookAuthor
         cover {
           childImageSharp {
@@ -43,13 +43,13 @@ const BookTemplate = (props) => {
   const fm = props.data.markdownRemark.frontmatter;
   return (
     <Layout>
-      <SEO title={fm.bookTitle} />
+      <SEO title={fm.title} />
       <div className="relative w-full -mt-10" style={{ height: "75vh" }}>
         <div className="absolute inset-0 bg-cover bg-center z-0 rounded">
           {fm.cover ? (
             <GatsbyImage
               image={fm.cover.childImageSharp.gatsbyImageData}
-              alt={fm.bookTitle}
+              alt={fm.title}
               className="h-full"
             />
           ) : (
@@ -59,7 +59,7 @@ const BookTemplate = (props) => {
         <div className="bg-gradient-to-t from-black absolute inset-0 z-10 px-4 py-5 text-white flex flex-col justify-end ">
           <div className="max-w-screen-sm md:max-w-screen-md w-full mx-auto sm:px-4 lg:pl-8">
             <h2 className="text-4xl font-semibold text-opacity-100">
-              {fm.bookTitle}
+              {fm.title}
             </h2>
             <h4 className="text-2xl">by {fm.bookAuthor}</h4>
             {fm.bookRating ? (

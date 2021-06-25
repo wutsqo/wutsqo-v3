@@ -1,5 +1,5 @@
 ---
-bookTitle: "Orang Asing"
+title: "Orang Asing"
 bookAuthor: "Albert Camus"
 bookRating: 4
 cover: "./cover/orang-asing.jpg"

@@ -1,5 +1,5 @@
 ---
-bookTitle: "Deep Work: Rules for Focused Success in a Distracted World"
+title: "Deep Work: Rules for Focused Success in a Distracted World"
 bookAuthor: "Cal Newport"
 bookRating: 4
 cover: "./cover/deep-work.jpg"

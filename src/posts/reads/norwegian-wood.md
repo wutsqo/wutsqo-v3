@@ -1,5 +1,5 @@
 ---
-bookTitle: "Norwegian Wood"
+title: "Norwegian Wood"
 bookAuthor: "Haruki Murakami"
 bookRating: 4.5
 cover: "./cover/norwegian-wood.jpg"

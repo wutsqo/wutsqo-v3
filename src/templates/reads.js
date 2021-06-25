@@ -20,7 +20,7 @@ export const query = graphql`
       edges {
         node {
           frontmatter {
-            bookTitle
+            title
             bookAuthor
             cover {
               childImageSharp {
@@ -68,7 +68,7 @@ const ReadingList = (props) => {
             .filter(
               ({ node }) =>
                 node.frontmatter.bookAuthor.toLowerCase().includes(search) ||
-                node.frontmatter.bookTitle.toLowerCase().includes(search)
+                node.frontmatter.title.toLowerCase().includes(search)
             )
             .map((edge, id) => {
               return (

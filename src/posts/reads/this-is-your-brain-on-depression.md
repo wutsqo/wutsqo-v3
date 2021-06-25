@@ -1,5 +1,5 @@
 ---
-bookTitle: "This Is Your Brain on Depression: Creating a Path to Getting Better"
+title: "This Is Your Brain on Depression: Creating a Path to Getting Better"
 bookAuthor: "Faith G. Harper"
 bookRating: 4
 cover: "./cover/this-is-your-brain-on-depression.jpg"

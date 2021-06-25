@@ -1,5 +1,5 @@
 ---
-bookTitle: "The Art of Loving"
+title: "The Art of Loving"
 bookAuthor: "Erich Fromm"
 bookRating: 4
 cover: "./cover/the-art-of-loving.jpg"

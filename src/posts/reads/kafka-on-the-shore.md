@@ -1,5 +1,5 @@
 ---
-bookTitle: "Kafka on the Shore"
+title: "Kafka on the Shore"
 bookAuthor: "Haruki Murakami"
 bookRating: 4
 cover: "./cover/kafka-on-the-shore.jpg"

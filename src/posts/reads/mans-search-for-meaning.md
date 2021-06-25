@@ -1,5 +1,5 @@
 ---
-bookTitle: "Man's Search for Meaning"
+title: "Man's Search for Meaning"
 bookAuthor: "Viktor E. Frankl"
 bookRating: 4
 cover: "./cover/mans-search-for-meaning.jpg"

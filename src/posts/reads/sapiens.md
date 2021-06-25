@@ -1,5 +1,5 @@
 ---
-bookTitle: "Sapiens: Riwayat Singkat Umat Manusia"
+title: "Sapiens: Riwayat Singkat Umat Manusia"
 bookAuthor: "Yuval Noah Harari"
 bookRating: 4.5
 cover: "./cover/sapiens.jpg"

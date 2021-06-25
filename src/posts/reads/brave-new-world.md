@@ -1,5 +1,5 @@
 ---
-bookTitle: "Brave New World"
+title: "Brave New World"
 bookAuthor: "Aldous Huxley"
 bookRating:
 cover: "./cover/brave-new-world.jpg"

@@ -1,5 +1,5 @@
 ---
-bookTitle: "The Metamorphosis"
+title: "The Metamorphosis"
 bookAuthor: "Franz Kafka"
 bookRating: 3.5
 cover: "./cover/the-metamorphosis.jpg"

@@ -42,7 +42,7 @@ const BookCard = ({ data, link }) => {
               {data.cover ? (
                 <GatsbyImage
                   image={data.cover.childImageSharp.gatsbyImageData}
-                  alt={data.bookTitle}
+                  alt={data.title}
                   className="h-full"
                 />
               ) : (
@@ -50,7 +50,7 @@ const BookCard = ({ data, link }) => {
               )}
             </ThumbCover>
             <ThumbOverlay>
-              <div>{data.bookTitle}</div>
+              <div>{data.title}</div>
               <div>
                 {data.bookRating ? (
                   <StarRatings

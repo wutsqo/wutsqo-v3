@@ -1,5 +1,5 @@
 ---
-bookTitle: "Turtles All The Way Down"
+title: "Turtles All The Way Down"
 bookAuthor: "John Green"
 bookRating: 4
 bookCover: "https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1523440333l/39800802._SX318_.jpg"

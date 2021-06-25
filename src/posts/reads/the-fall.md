@@ -1,5 +1,5 @@
 ---
-bookTitle: "The Fall"
+title: "The Fall"
 bookAuthor: "Albert Camus"
 bookRating:
 cover: "./cover/the-fall.jpg"
