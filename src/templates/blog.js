@@ -1,5 +1,6 @@
 import { graphql } from "gatsby";
 import React from "react";
+import PageHeading from "../components/heading";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
@@ -26,13 +27,12 @@ const Blog = (props) => {
       timeToRead={props.data.markdownRemark.timeToRead}
     >
       <SEO title={props.data.markdownRemark.frontmatter.title} />
+      <PageHeading title={props.data.markdownRemark.frontmatter.title} />
       <div
-        className="mt-5 max-w-screen-sm mx-auto"
+        className="mt-5 max-w-screen-sm mx-auto prose md:prose-lg dark:prose-dark prose-quoteless"
         dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}
       ></div>
-      <div className="mt-5 max-w-screen-md mx-auto">
-        <hr />
-      </div>
+      <div className="mt-5 max-w-screen-md mx-auto"></div>
     </Layout>
   );
 };

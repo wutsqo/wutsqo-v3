@@ -58,7 +58,7 @@ function Nav() {
                     to="/blog"
                     className=" px-3 py-2 rounded-md  text-lg no-underline"
                   >
-                    Blog
+                    Posts
                   </Link>
 
                   <Link
@@ -142,7 +142,7 @@ function Nav() {
                 to="/blog"
                 className="block px-3 py-2 rounded-md text-lg no-underline"
               >
-                Blog
+                Posts
               </Link>
 
               <Link
