@@ -3,34 +3,6 @@ import tw from "twin.macro";
 import StarRatings from "react-star-ratings";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
-import { motion, useAnimation } from "framer-motion";
-import { useInView } from "react-intersection-observer";
-
-const FadeWhenVisible = ({ children }) => {
-  const controls = useAnimation();
-  const [ref, inView] = useInView();
-
-  React.useEffect(() => {
-    if (inView) {
-      controls.start("visible");
-    }
-  }, [controls, inView]);
-
-  return (
-    <motion.div
-      ref={ref}
-      animate={controls}
-      initial="hidden"
-      transition={{ duration: 0.3 }}
-      variants={{
-        visible: { opacity: 1, scale: 1 },
-        hidden: { opacity: 0.5, scale: 0.5 },
-      }}
-    >
-      {children}
-    </motion.div>
-  );
-};
 
 const BookCard = ({ data, link }) => {
   const Container = tw.div`mb-2 p-2 dark:bg-gray-800 shadow rounded`;
@@ -62,44 +34,42 @@ const BookCard = ({ data, link }) => {
       break;
   }
   return (
-    <FadeWhenVisible>
-      <Link to={link} style={{ textDecoration: "none" }}>
-        <Container>
-          <ThumbContainer>
-            <ThumbCover>
-              {data.cover ? (
-                <GatsbyImage
-                  image={data.cover.childImageSharp.gatsbyImageData}
-                  alt={data.title}
-                  className="h-full rounded"
+    <Link to={link} style={{ textDecoration: "none" }}>
+      <Container>
+        <ThumbContainer>
+          <ThumbCover>
+            {data.cover ? (
+              <GatsbyImage
+                image={data.cover.childImageSharp.gatsbyImageData}
+                alt={data.title}
+                className="h-full rounded"
+              />
+            ) : (
+              "no image"
+            )}
+          </ThumbCover>
+          <ThumbOverlay>
+            <div>{data.title}</div>
+            <div>
+              {data.bookRating ? (
+                <StarRatings
+                  rating={data.bookRating}
+                  starRatedColor="#FF9529"
+                  starEmptyColor="#FFFFFF"
+                  starDimension="20px"
+                  starSpacing="1px"
                 />
               ) : (
-                "no image"
+                "in progress"
               )}
-            </ThumbCover>
-            <ThumbOverlay>
-              <div>{data.title}</div>
-              <div>
-                {data.bookRating ? (
-                  <StarRatings
-                    rating={data.bookRating}
-                    starRatedColor="#FF9529"
-                    starEmptyColor="#FFFFFF"
-                    starDimension="20px"
-                    starSpacing="1px"
-                  />
-                ) : (
-                  "in progress"
-                )}
-              </div>
-            </ThumbOverlay>
-          </ThumbContainer>
-          <ThumbStatus style={{ backgroundColor: statusBg }}>
-            {statusText}
-          </ThumbStatus>
-        </Container>
-      </Link>
-    </FadeWhenVisible>
+            </div>
+          </ThumbOverlay>
+        </ThumbContainer>
+        <ThumbStatus style={{ backgroundColor: statusBg }}>
+          {statusText}
+        </ThumbStatus>
+      </Container>
+    </Link>
   );
 };
 
