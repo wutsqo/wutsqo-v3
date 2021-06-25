@@ -25,6 +25,9 @@ export const query = graphql`
               placeholder: BLURRED
               transformOptions: { cropFocus: ATTENTION }
             )
+            resize {
+              src
+            }
           }
         }
         bookRating
@@ -34,6 +37,7 @@ export const query = graphql`
       }
       html
       timeToRead
+      excerpt(pruneLength: 150)
     }
   }
 `;
@@ -41,11 +45,13 @@ export const query = graphql`
 const BookTD = tw.td`py-2 pr-6 text-left text-sm`;
 
 const BookTemplate = ({ data, pageContext }) => {
-  // console.log(props);
   const fm = data.markdownRemark.frontmatter;
   return (
     <Layout>
-      <SEO title={fm.title} />
+      <SEO
+        title={`${fm.title} Book Review`}
+        description={`${data.markdownRemark.excerpt}`}
+      />
       <div className="relative w-full -mt-10" style={{ height: "70vh" }}>
         <div className="absolute inset-0 bg-cover bg-center z-0 rounded">
           {fm.cover ? (
@@ -59,7 +65,7 @@ const BookTemplate = ({ data, pageContext }) => {
           )}
         </div>
         <div className="bg-gradient-to-t from-black absolute inset-0 z-10 px-4 py-5 text-white flex flex-col justify-end ">
-          <div className="max-w-screen-sm md:max-w-screen-md w-full mx-auto sm:px-4 lg:pl-8">
+          <div className="max-w-screen-sm w-full mx-auto sm:px-4 lg:pl-8">
             <h2 className="text-4xl font-semibold text-opacity-100">
               {fm.title}
             </h2>
@@ -79,7 +85,7 @@ const BookTemplate = ({ data, pageContext }) => {
         </div>
       </div>
 
-      <div className="max-w-screen-sm md:max-w-screen-md mx-auto px-4 lg:pl-8">
+      <div className="max-w-screen-sm mx-auto px-4 lg:pl-8">
         {console.log(fm)}
         {fm.status === 4 ? (
           <div className="mt-5">
