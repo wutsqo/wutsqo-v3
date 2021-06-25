@@ -3,6 +3,34 @@ import tw from "twin.macro";
 import StarRatings from "react-star-ratings";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import { motion, useAnimation } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+
+const FadeWhenVisible = ({ children }) => {
+  const controls = useAnimation();
+  const [ref, inView] = useInView();
+
+  React.useEffect(() => {
+    if (inView) {
+      controls.start("visible");
+    }
+  }, [controls, inView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      animate={controls}
+      initial="hidden"
+      transition={{ duration: 0.3 }}
+      variants={{
+        visible: { opacity: 1, scale: 1 },
+        hidden: { opacity: 0.5, scale: 0.5 },
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const BookCard = ({ data, link }) => {
   const Container = tw.div`mb-2 p-2 dark:bg-gray-800 shadow rounded`;
@@ -34,7 +62,7 @@ const BookCard = ({ data, link }) => {
       break;
   }
   return (
-    <div>
+    <FadeWhenVisible>
       <Link to={link} style={{ textDecoration: "none" }}>
         <Container>
           <ThumbContainer>
@@ -43,7 +71,7 @@ const BookCard = ({ data, link }) => {
                 <GatsbyImage
                   image={data.cover.childImageSharp.gatsbyImageData}
                   alt={data.title}
-                  className="h-full"
+                  className="h-full rounded"
                 />
               ) : (
                 "no image"
@@ -71,7 +99,7 @@ const BookCard = ({ data, link }) => {
           </ThumbStatus>
         </Container>
       </Link>
-    </div>
+    </FadeWhenVisible>
   );
 };
 
