@@ -29,7 +29,7 @@ const Blog = ({ data }) => {
       timeToRead={data.markdownRemark.timeToRead}
     >
       <SEO title={data.markdownRemark.frontmatter.title} />
-      <div className="max-w-screen-sm mx-auto pt-12">
+      <div className="max-w-screen-sm mx-auto pt-12 px-4">
         <PageHeading
           title={data.markdownRemark.frontmatter.title}
           align="left"
