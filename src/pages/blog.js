@@ -16,8 +16,8 @@ const PostCard = ({
 }) => {
   return (
     <div
-      className="w-full h-full p-8 text-center flex flex-col 
-      justify-around rounded border-2 border-gray-200 dark:border-gray-700"
+      className="w-full h-full p-8 text-left flex flex-col 
+      justify-between rounded border-2 border-gray-200 dark:border-gray-700"
     >
       <h1 className="text-3xl text-black dark:text-white">{title}</h1>
       <p className="text-base text-black dark:text-white">

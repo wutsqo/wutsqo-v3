@@ -43,7 +43,6 @@ const Blog = ({ data }) => {
           className="mt-5 py-8 prose md:prose-lg dark:prose-dark prose-quoteless"
           dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }}
         ></div>
-        <hr />
         <div className="mt-5">
           <Disqus />
         </div>
