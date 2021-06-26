@@ -125,7 +125,7 @@ function Nav() {
           leaveTo="opacity-0 scale-95"
         >
           <div className="md:hidden" id="mobile-menu">
-            <div className="px-4 pt-2 pb-3 space-y-1 flex flex-col">
+            <div className="px-4 pt-2 pb-3 flex flex-col">
               <NavLink to="/about" text="About" />
               <NavLink to="/blog" text="Posts" />
               <NavLink to="/reads" text="Reading List" />
