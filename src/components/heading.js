@@ -1,9 +1,15 @@
 import * as React from "react";
 
-const PageHeading = ({ title }) => {
+const PageHeading = ({ title, align }) => {
   return (
     <div>
-      <h1 className="text-4xl text-center p-4 mt-10 mb-6">{title}</h1>
+      <h1
+        className={`text-4xl py-4 mt-10 mb-6 text-${
+          align ? align : "center"
+        } font-semibold`}
+      >
+        {title}
+      </h1>
     </div>
   );
 };

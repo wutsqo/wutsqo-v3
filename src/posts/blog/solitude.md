@@ -18,9 +18,9 @@ excerpt: "Solitude was the song I sang"
 > And I guess accept this faith.\
 > Because, I'm a man on a mission.
 
+---
+
 ### Related:
 
-[What is Solitude? - Psychology Today](https://www.psychologytoday.com/intl/articles/200307/what-is-solitude)<br>
-[Loneliness - A Video by Kuzgesagt](https://youtu.be/n3Xv_g3g-mA)
-
----
+- [What is Solitude? - Psychology Today](https://www.psychologytoday.com/intl/articles/200307/what-is-solitude)
+- [Loneliness - A Video by Kuzgesagt](https://youtu.be/n3Xv_g3g-mA)
