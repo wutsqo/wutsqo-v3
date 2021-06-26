@@ -27,12 +27,15 @@ const Blog = (props) => {
       timeToRead={props.data.markdownRemark.timeToRead}
     >
       <SEO title={props.data.markdownRemark.frontmatter.title} />
-      <PageHeading title={props.data.markdownRemark.frontmatter.title} />
-      <div
-        className="mt-5 max-w-screen-sm mx-auto prose md:prose-lg dark:prose-dark prose-quoteless"
-        dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}
-      ></div>
-      <div className="mt-5 max-w-screen-md mx-auto"></div>
+      <div className="max-w-screen-sm mx-auto ">
+        <PageHeading title={props.data.markdownRemark.frontmatter.title} />
+        <div className="my-5 max-w-screen-sm"></div>
+        <div
+          className="mt-5 prose md:prose-lg dark:prose-dark prose-quoteless"
+          dangerouslySetInnerHTML={{ __html: props.data.markdownRemark.html }}
+        ></div>
+        <div className="mt-5"></div>
+      </div>
     </Layout>
   );
 };

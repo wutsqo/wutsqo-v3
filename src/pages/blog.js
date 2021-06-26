@@ -16,16 +16,20 @@ const PostCard = ({
 }) => {
   return (
     <div
-      className="w-full h-full p-8 text-center flex flex-col justify-around rounded border-2 border-gray-200 dark:border-gray-700"
-      // style={{ backgroundColor: color }}
+      className="w-full h-full p-8 text-center flex flex-col 
+      justify-around rounded border-2 border-gray-200 dark:border-gray-700"
     >
       <h1 className="text-3xl text-black dark:text-white">{title}</h1>
-      {/* <p className="italic">{excerpt}</p> */}
       <p className="text-base text-black dark:text-white">
-        {date} &nbsp; • &nbsp; {minutesRead} min read &nbsp; • &nbsp;{" "}
-        <Link to={`/${draft ? "blog/" : slug}`} className="underline">
-          {draft ? "coming soon" : "read more"}
-        </Link>
+        {!draft ? (
+          <div>
+            <Link to={`/${slug}`} className="hover:text-pink-500">
+              read more
+            </Link>
+          </div>
+        ) : (
+          <div>coming soon</div>
+        )}
       </p>
     </div>
   );
