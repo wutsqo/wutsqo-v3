@@ -115,7 +115,7 @@ const BookTemplate = ({ data, pageContext }) => {
                     {fm.tags
                       ? fm.tags.map((tag) => {
                           return (
-                            <button className="bg-gray-200 dark:bg-gray-800 mr-2 px-2 py-1 mb-1 text-xs rounded-lg">
+                            <button className="bg-pink-200 dark:bg-pink-800 mr-2 px-2 py-1 mb-1 text-xs rounded">
                               {tag}
                             </button>
                           );
@@ -134,22 +134,22 @@ const BookTemplate = ({ data, pageContext }) => {
           </div>
         ) : null}
 
-        <div className="flex flex-col md:flex-row gap-4 justify-between mt-6 mb-16">
-          <div className="w-full md:w-1/2 text-left">
+        <div className="flex flex-col md:flex-row justify-between mt-6 mb-16 border rounded dark:border-pink-900">
+          <div className="w-full md:w-1/2 text-left hover:text-pink-700 dark:hover:text-pink-300 p-2 border-b md:border-b-0 md:border-r dark:border-pink-900">
             {pageContext.previous ? (
               <Link to={`/reads/${pageContext.previous.fields.slug}`}>
                 <b>&larr; prev</b>
-                <div className="text-sm hover:underline">
+                <div className="text-sm">
                   {pageContext.previous.frontmatter.title}
                 </div>
               </Link>
             ) : null}
           </div>
-          <div className="w-full md:w-1/2 text-right">
+          <div className="w-full md:w-1/2 text-right hover:text-pink-700 dark:hover:text-pink-300 p-2">
             {pageContext.next ? (
               <Link to={`/reads/${pageContext.next.fields.slug}`}>
                 <b>next &rarr;</b>
-                <div className="text-sm hover:underline">
+                <div className="text-sm">
                   {pageContext.next.frontmatter.title}
                 </div>
               </Link>

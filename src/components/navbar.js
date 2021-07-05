@@ -43,7 +43,7 @@ function Nav() {
   return (
     <div>
       <nav
-        className={`fixed w-full z-50 bg-white text-gray-900 dark:text-white dark:bg-gray-900 bg-opacity-80 dark:bg-opacity-100 backdrop-filter backdrop-blur-lg shadow ${
+        className={`fixed w-full z-50 bg-white text-gray-900 dark:text-white dark:bg-black bg-opacity-75 dark:bg-opacity-75 backdrop-filter backdrop-blur-lg shadow ${
           visible
             ? "top-0 transition duration-500"
             : "transform -translate-y-96 transition duration-1000 delay-500"

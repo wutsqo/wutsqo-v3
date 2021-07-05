@@ -5,13 +5,13 @@ import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
 
 const BookCard = ({ data, link }) => {
-  const Container = tw.div`mb-2 p-2 dark:bg-gray-800 shadow rounded`;
+  const Container = tw.div`mb-2 p-2 dark:bg-pink-900 shadow rounded`;
   const ThumbContainer = tw.div`relative h-60 w-full rounded`;
   const ThumbCover = tw.div`absolute inset-0 bg-cover bg-center z-0 rounded`;
   const ThumbOverlay = tw.div`opacity-0 hover:opacity-90 hover:bg-black duration-300 absolute 
                               inset-0 z-10 flex flex-col justify-between px-2 py-5 items-center 
                               text-center text-white font-semibold rounded`;
-  const ThumbStatus = tw.div`mt-1 p-1 dark:bg-gray-800 shadow rounded text-center text-black text-xs`;
+  const ThumbStatus = tw.div`mt-1 p-1 dark:bg-pink-900 shadow rounded text-center text-black text-xs`;
   let statusBg;
   let statusText;
 

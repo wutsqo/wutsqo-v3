@@ -20,8 +20,8 @@ module.exports = {
               "ul > li::before": { backgroundColor: theme("colors.gray.700") },
               hr: { borderColor: theme("colors.gray.800") },
               blockquote: {
-                color: theme("colors.gray.200"),
-                borderLeftColor: theme("colors.gray.800"),
+                color: theme("colors.pink.200"),
+                borderLeftColor: theme("colors.pink.800"),
               },
               h1: { color: theme("colors.gray.200") },
               h2: { color: theme("colors.gray.200") },

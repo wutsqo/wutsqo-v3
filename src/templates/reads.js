@@ -55,7 +55,7 @@ const ReadingList = (props) => {
           <input
             type="text"
             placeholder="Search by title or author"
-            className="px-4 py-2 text-center dark:bg-gray-800 mb-8 shadow rounded-lg w-full mx-2 focus:outline-none focus:ring-2 focus:border-transparent hover:w-96 transition-all"
+            className="px-4 py-2 text-center dark:bg-pink-900 mb-8 shadow rounded-lg w-full focus:outline-none focus:ring-2 focus:border-transparent hover:w-96 transition-all"
             onChange={(e) =>
               debounce(
                 500,

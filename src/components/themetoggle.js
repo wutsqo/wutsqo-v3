@@ -10,7 +10,7 @@ export default function ThemeToggle() {
           <Switch
             onChange={(e) => toggleTheme(theme === "light" ? "dark" : "light")}
             className={`${
-              theme === "dark" ? "bg-blue-600" : "bg-gray-200"
+              theme === "dark" ? "bg-pink-900" : "bg-gray-200"
             } relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none`}
           >
             {console.log(theme)}
