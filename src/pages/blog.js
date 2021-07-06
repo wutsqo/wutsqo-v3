@@ -65,8 +65,8 @@ const Blog = () => {
   return (
     <Layout>
       <SEO title="Posts" />
-      <PageHeading title="Posts" />
-      <div className="max-w-screen-lg mx-auto gap-1 px-4 grid grid-cols-1 md:grid-cols-2 justify-between">
+      <PageHeading title="Coming Soon" />
+      {/* <div className="max-w-screen-lg mx-auto gap-1 px-4 grid grid-cols-1 md:grid-cols-2 justify-between">
         {data.allMarkdownRemark.edges.map((edge, i) => {
           return (
             <div className="w-full h-56">
@@ -84,7 +84,7 @@ const Blog = () => {
             </div>
           );
         })}
-      </div>
+      </div> */}
     </Layout>
   );
 };

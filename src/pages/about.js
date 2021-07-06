@@ -16,8 +16,8 @@ const AboutPage = () => {
           I'm a Computer Science student currently living in Jakarta, Indonesia.
           I like reading books and literature about fiction, self-help,
           philosophy, science, and technology. Sometimes I play video games or
-          watch korean drama when I don't feel "energized" enough to read. I'm
-          also passionate in full-stack web development.
+          watch movies when I don't feel "energized" enough to read. I'm also
+          passionate in full-stack web development.
         </p>
         <p>
           Feel free to hit me up if you are looking for a project partner, or if
