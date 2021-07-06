@@ -35,9 +35,9 @@ const IndexPage = () => {
           I'm{" "}
           <TextTransition
             text={TEXTS[index % TEXTS.length]}
-            springConfig={presets.default}
+            springConfig={presets.stiff}
             inline={true}
-            noOverflow={true}
+            delay={100}
           />
         </h1>
         <div className="text-sm sm:text-base prose dark:prose-dark">
