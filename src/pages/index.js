@@ -1,7 +1,11 @@
 import * as React from "react";
 import TextTransition, { presets } from "react-text-transition";
-import Layout from "../components/layout";
 import SEO from "../components/seo";
+import Nav from "../components/navbar";
+import { FiGithub } from "@react-icons/all-files/fi/FiGithub";
+import { FiLinkedin } from "@react-icons/all-files/fi/FiLinkedin";
+import { FiMail } from "@react-icons/all-files/fi/FiMail";
+import { SiKeybase } from "@react-icons/all-files/si/SiKeybase";
 
 const TEXTS = [
   "Wutsqo",
@@ -24,53 +28,60 @@ const IndexPage = () => {
   }, []);
 
   return (
-    <Layout>
+    <div>
+      <Nav />
       <SEO title="Home" />
       <div
-        className="max-w-screen-md mx-auto p-4 dark:text-gray-100"
-        style={{ paddingTop: "50vh" }}
+        className="min-h-screen p-4 dark:text-pink-100 bg-pattern bg-pink-200 dark:bg-black"
+        style={{ paddingTop: "40vh" }}
       >
-        <h2 className="text-2xl sm:text-3xl font-semibold">Hello!</h2>
-        <h1 className="text-3xl sm:text-5xl font-semibold">
-          I'm{" "}
-          <TextTransition
-            text={TEXTS[index % TEXTS.length]}
-            springConfig={presets.stiff}
-            inline={true}
-            delay={100}
-          />
-        </h1>
-        <div className="text-sm sm:text-base prose dark:prose-dark">
-          <div className="font-semibold" style={{ marginTop: "10vh" }}>
-            Find me on
+        <div className="max-w-screen-md mx-auto ">
+          <h2 className="text-2xl sm:text-4xl font-semibold">Hello!</h2>
+          <h1 className="text-4xl sm:text-6xl font-semibold">
+            I'm{" "}
+            <TextTransition
+              text={TEXTS[index % TEXTS.length]}
+              springConfig={presets.stiff}
+              inline={true}
+              delay={100}
+            />
+          </h1>
+          <div className="flex gap-3 prose dark:prose-dark mt-12">
+            <a href="mailto:wutsqo@ristek.cs.ui.ac.id">
+              <FiMail className="h-9 w-9 hover:bg-white dark:hover:bg-pink-900 rounded p-1" />
+            </a>
+            <a
+              href="https://linkedin.com/in/wutsqo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiLinkedin className="h-9 w-9 hover:bg-white dark:hover:bg-pink-900 rounded p-1" />
+            </a>
+            <a
+              href="http://keybase.io/wutsqo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <SiKeybase className="h-9 w-9 hover:bg-white dark:hover:bg-pink-900 rounded p-1" />
+            </a>
+            {/* <a
+              href="https://goodreads.com/wutsqo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FaGoodreadsG className="h-9 w-9 hover:bg-white dark:hover:bg-pink-900 rounded p-1" />
+            </a> */}
+            <a
+              href="http://github.com/wutsqo"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <FiGithub className="h-9 w-9 hover:bg-white dark:hover:bg-pink-900 rounded p-1" />
+            </a>
           </div>
-          <a href="mailto:wutsqo@ristek.cs.ui.ac.id">email</a> •{" "}
-          <a
-            href="https://linkedin.com/in/wutsqo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            linkedin
-          </a>{" "}
-          •{" "}
-          <a
-            href="https://goodreads.com/wutsqo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            goodreads
-          </a>{" "}
-          •{" "}
-          <a
-            href="http://github.com/wutsqo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            github
-          </a>
         </div>
       </div>
-    </Layout>
+    </div>
   );
 };
 
