@@ -13,8 +13,6 @@ export default function ThemeToggle() {
               theme === "dark" ? "bg-pink-900" : "bg-gray-200"
             } relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none`}
           >
-            {console.log(theme)}
-
             <span className="sr-only">Enable Dark Theme</span>
             <span
               className={`${
