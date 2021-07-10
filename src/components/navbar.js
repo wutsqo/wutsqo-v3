@@ -73,6 +73,7 @@ function Nav() {
                   <NavLink to="/" text="Home" />
                   <NavLink to="/about" text="About" />
                   <NavLink to="/blog" text="Posts" />
+                  <NavLink to="/music" text="Music" />
                   <NavLink to="/reads" text="Reading List" />
                 </div>
               </div>
@@ -141,6 +142,7 @@ function Nav() {
               <NavLink to="/" text="Home" />
               <NavLink to="/about" text="About" />
               <NavLink to="/blog" text="Posts" />
+              <NavLink to="/music" text="Music" />
               <NavLink to="/reads" text="Reading List" />
             </div>
           </div>

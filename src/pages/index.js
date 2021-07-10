@@ -43,7 +43,7 @@ const IndexPage = () => {
   React.useEffect(() => {
     const interval = setInterval(() => {
       fetchNowPlaying();
-    }, 5000);
+    }, 3500);
     return () => clearInterval(interval);
   }, []);
 
