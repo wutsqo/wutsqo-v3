@@ -80,9 +80,9 @@ const MusicPage = () => {
                   href={track.external_urls.spotify}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full md:w-1/2 flex items-center flex-nowrap pl-4 hover:bg-white rounded-lg hover:shadow dark:hover:bg-pink-900"
+                  className="w-full md:w-5/12 flex items-center flex-nowrap mx-2 my-2 rounded-lg hover:bg-white  hover:shadow dark:hover:bg-pink-900"
                 >
-                  <div className="p-2">
+                  <div>
                     <img
                       src={track.album.images[2].url}
                       alt={track.name}
@@ -107,8 +107,8 @@ const MusicPage = () => {
         )}
       </div>
       {nowPlaying.item ? (
-        <div className="flex justify-center md:justify-end fixed md:right-4 bottom-0">
-          <div className="flex justify-end gap-4 items-center shadow-md text-right bg-white dark:bg-pink-900 pl-4 pr-4 md:pr-0 w-screen md:max-w-max md:mx-8">
+        <div className="flex justify-center sm:justify-end fixed sm:right-4 bottom-0">
+          <div className="flex justify-end gap-4 items-center shadow-md text-right bg-white dark:bg-pink-900 bg-opacity-75 dark:bg-opacity-75 backdrop-filter backdrop-blur-lg pl-4 pr-6 sm:pr-0 w-screen sm:max-w-max sm:mx-8">
             <div>
               <div className="text-sm">currently listening to</div>
               <a
@@ -137,7 +137,7 @@ const MusicPage = () => {
               <img
                 src={nowPlaying.item.album.images[1].url}
                 alt={nowPlaying.item.name}
-                className="h-20 w-20 md:h-24 md:w-24"
+                className="h-20 w-20 md:h-28 md:w-28"
               />
             </a>
           </div>
