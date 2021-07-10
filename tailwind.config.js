@@ -3,6 +3,9 @@ module.exports = {
   darkMode: "class",
   theme: {
     extend: {
+      zIndex: {
+        "-10": "-10",
+      },
       typography(theme) {
         return {
           quoteless: {

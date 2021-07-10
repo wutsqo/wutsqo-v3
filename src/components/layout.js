@@ -25,9 +25,9 @@ const Layout = ({ children }) => {
   return (
     <>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div className="pt-10 dark:bg-black dark:text-gray-100 bg-pink-50">
+      <div className="dark:bg-black dark:text-gray-100 bg-pink-50">
         <main className="min-h-screen ">{children}</main>
-        <footer className="text-center text-sm p-8 mt-10 ">
+        <footer className="text-center text-sm p-12 z-20 relative bg-white dark:bg-black">
           © {new Date().getFullYear()}, Muhammad Urwatil Wutsqo
         </footer>
       </div>
