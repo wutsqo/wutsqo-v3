@@ -47,6 +47,7 @@ module.exports = {
   variants: {
     extend: {
       typography: ["dark"],
+      zIndex: ["hover"],
     },
   },
   plugins: [require("@tailwindcss/typography")],

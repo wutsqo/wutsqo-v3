@@ -40,7 +40,7 @@ const MusicPage = () => {
     <Layout>
       <SEO title="Music" />
       <PageHeading title="Top Artists" />
-      <div className="max-w-screen-lg mx-auto">
+      <div className="md:max-w-screen-md lg:max-w-screen-lg mx-auto">
         <div className="flex flex-wrap justify-around">
           {topArtist.items ? (
             topArtist.items.map((artist, index) => {
@@ -71,7 +71,7 @@ const MusicPage = () => {
         </div>
       </div>
       <PageHeading title="Top Tracks" />
-      <div className="max-w-screen-lg mx-auto px-4">
+      <div className="md:max-w-screen-md lg:max-w-screen-lg mx-auto px-4">
         {topTracks.items ? (
           <div className="flex flex-wrap justify-around mx-auto">
             {topTracks.items.map((track, index) => {
@@ -80,13 +80,13 @@ const MusicPage = () => {
                   href={track.external_urls.spotify}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full md:w-5/12 flex items-center flex-nowrap mx-2 my-2 rounded-lg hover:bg-white  hover:shadow dark:hover:bg-pink-900"
+                  className="w-full md:w-5/12 flex items-center flex-nowrap mx-2 my-2 rounded-lg hover:bg-white  hover:shadow dark:hover:bg-pink-900 transform transition md:hover:scale-125 md:hover:z-50"
                 >
                   <div>
                     <img
-                      src={track.album.images[2].url}
+                      src={track.album.images[1].url}
                       alt={track.name}
-                      className="h-20 w-20 rounded-lg min-w-full"
+                      className="h-20 w-20 rounded-lg min-w-full "
                     />
                   </div>
                   <div className="px-2 max-w-xs">
@@ -107,7 +107,7 @@ const MusicPage = () => {
         )}
       </div>
       {nowPlaying.item ? (
-        <div className="flex justify-center sm:justify-end fixed sm:right-4 bottom-0">
+        <div className="flex justify-center sm:justify-end fixed sm:right-8 bottom-0">
           <div className="flex justify-end gap-4 items-center shadow-md text-right bg-white dark:bg-pink-900 bg-opacity-75 dark:bg-opacity-75 backdrop-filter backdrop-blur-lg pl-4 pr-6 sm:pr-0 w-screen sm:max-w-max sm:mx-8">
             <div>
               <div className="text-sm">currently listening to</div>
@@ -137,7 +137,7 @@ const MusicPage = () => {
               <img
                 src={nowPlaying.item.album.images[1].url}
                 alt={nowPlaying.item.name}
-                className="h-20 w-20 md:h-28 md:w-28"
+                className="h-20 w-20 md:h-32 md:w-32 transform transition md:hover:scale-150 md:hover:translate-x-8 md:hover:-translate-y-7"
               />
             </a>
           </div>

@@ -22,7 +22,7 @@ const BookCard = ({ data, link }) => {
       break;
     case 3:
       statusBg = "#9AE6E1";
-      statusText = "Finished";
+      statusText = "Rated";
       break;
     case 2:
       statusBg = "#FBE7BC";
