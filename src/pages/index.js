@@ -7,6 +7,7 @@ import { FiLinkedin } from "@react-icons/all-files/fi/FiLinkedin";
 import { FiMail } from "@react-icons/all-files/fi/FiMail";
 import { SiKeybase } from "@react-icons/all-files/si/SiKeybase";
 import { FaSpotify } from "@react-icons/all-files/fa/FaSpotify";
+import { Link } from "gatsby";
 
 const TEXTS = [
   "Wutsqo",
@@ -43,7 +44,7 @@ const IndexPage = () => {
   React.useEffect(() => {
     const interval = setInterval(() => {
       fetchNowPlaying();
-    }, 3500);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 
@@ -109,7 +110,10 @@ const IndexPage = () => {
             className="flex gap-2 items-center max-w-max p-1 rounded"
             style={{ marginTop: "15vh" }}
           >
-            <FaSpotify className="h-6 w-6" style={{ color: "#1DB954" }} />
+            <Link to="/music">
+              <FaSpotify className="h-6 w-6" style={{ color: "#1DB954" }} />
+            </Link>
+
             <div className="px-2 border-l-2 border-black dark:border-pink-900">
               {nowPlaying.item ? (
                 <div>

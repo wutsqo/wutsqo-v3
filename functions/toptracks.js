@@ -37,7 +37,7 @@ exports.handler = async (event, context) => {
       console.error(err);
     });
 
-  return fetch(`${nowPlayingEndpoint}?time_range=short_term&limit=20`, {
+  return fetch(`${nowPlayingEndpoint}?time_range=short_term&limit=16`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${accessToken}`,
@@ -45,6 +45,7 @@ exports.handler = async (event, context) => {
   })
     .then((res) => res.json())
     .then((json) => {
+      console.log(json.items[1]);
       const toReturn = {
         statusCode: 200,
         body: JSON.stringify(json),
