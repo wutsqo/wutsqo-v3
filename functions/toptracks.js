@@ -45,7 +45,7 @@ exports.handler = async (event, context) => {
   })
     .then((res) => res.json())
     .then((json) => {
-      console.log(json.items[1]);
+      // console.log(json.items[1]);
       const toReturn = {
         statusCode: 200,
         body: JSON.stringify(json),
