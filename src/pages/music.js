@@ -17,8 +17,16 @@ const MusicPage = () => {
   const [artistFocus, setArtistFocus] = useState({});
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioSrc, setAudioSrc] = useState("");
-  const [audio, setAudio] = useState(new Audio());
+
   const [playIndex, setPlayIndex] = useState();
+
+  if (typeof Audio != "undefined") {
+    const [audio, setAudio] = useState(new Audio());
+    audio.addEventListener("ended", function () {
+      audio.currentTime = 0;
+      setIsPlaying(false);
+    });
+  }
 
   useEffect(() => {
     fetch(`/.netlify/functions/topartists`)
@@ -31,8 +39,6 @@ const MusicPage = () => {
       .then((response) => response.json())
       .then((resultData) => {
         setTopTracks(resultData);
-        // setAudioSrc(resultData.items[0].preview_url);
-        // setAudio(new Audio(resultData.items[0].preview_url));
       });
   }, []);
 
@@ -62,11 +68,6 @@ const MusicPage = () => {
   useEffect(() => {
     isPlaying ? audio.play() : audio.pause();
   }, [isPlaying]);
-
-  audio.addEventListener("ended", function () {
-    audio.currentTime = 0;
-    setIsPlaying(false);
-  });
 
   function closeModal() {
     setIsOpen(false);
