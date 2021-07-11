@@ -16,12 +16,11 @@ const MusicPage = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [artistFocus, setArtistFocus] = useState({});
   const [isPlaying, setIsPlaying] = useState(false);
-  const [audioSrc, setAudioSrc] = useState("");
-
+  const [audioSrc, setAudioSrc] = useState();
+  const [audio, setAudio] = useState();
   const [playIndex, setPlayIndex] = useState();
 
   if (typeof Audio != "undefined") {
-    const [audio, setAudio] = useState(new Audio());
     audio.addEventListener("ended", function () {
       audio.currentTime = 0;
       setIsPlaying(false);
