@@ -4,11 +4,11 @@ import { Link } from "gatsby";
 import ThemeToggle from "./themetoggle";
 import { debounce, throttle } from "throttle-debounce";
 
-const NavLink = ({ to, text }) => {
+export const NavLink = ({ to, text }) => {
   return (
     <Link
       to={to}
-      className="py-2 my-2 rounded px-2 mx-2 text-lg no-underline bg-transparent"
+      className="py-2 my-2 rounded px-2 mx-1 text-lg no-underline bg-transparent"
       activeClassName="bg-pink-200 dark:bg-pink-900 dark:text-white text-black"
     >
       {text}
@@ -74,7 +74,8 @@ function Nav() {
                   <NavLink to="/about" text="About" />
                   <NavLink to="/blog" text="Posts" />
                   <NavLink to="/music" text="Music" />
-                  <NavLink to="/reads" text="Reading List" />
+                  <NavLink to="/reads" text="Reading" />
+                  <NavLink to="/running" text="Running" />
                 </div>
               </div>
 
@@ -143,7 +144,8 @@ function Nav() {
               <NavLink to="/about" text="About" />
               <NavLink to="/blog" text="Posts" />
               <NavLink to="/music" text="Music" />
-              <NavLink to="/reads" text="Reading List" />
+              <NavLink to="/reads" text="Reading" />
+              <NavLink to="/running" text="Running" />
             </div>
           </div>
         </Transition>
