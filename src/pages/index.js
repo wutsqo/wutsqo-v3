@@ -14,7 +14,7 @@ const TEXTS = [
   "from Indonesia 🇮🇩",
   "a CS Student",
   "a Book Lover",
-  "a Digital Minimalist",
+  // "a Digital Minimalist",
   "a Web Developer",
 ];
 

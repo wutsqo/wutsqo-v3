@@ -2,8 +2,8 @@ import * as React from "react";
 import SEO from "../components/seo";
 import { graphql, Link, useStaticQuery } from "gatsby";
 import Layout from "../components/layout";
-import PageHeading from "../components/heading";
 import FadeWhenVisible from "../components/animation/fadewhenvisible";
+import { NavLink } from "../components/navbar";
 
 const PostCard = ({
   title,
@@ -65,7 +65,21 @@ const Blog = () => {
   return (
     <Layout>
       <SEO title="Posts" />
-      <PageHeading title="Coming Soon" />
+      <div className="max-w-screen-lg pt-48 text-7xl px-4 text-center mx-auto">
+        <FadeWhenVisible>coming soon!</FadeWhenVisible>
+        <FadeWhenVisible>
+          <div className="text-lg mt-16">
+            you can visit other pages instead:
+          </div>
+        </FadeWhenVisible>
+        <FadeWhenVisible>
+          <div className="flex justify-center flex-wrap mt-8">
+            <NavLink to="/about" text="About" />
+            <NavLink to="/music" text="Music" />
+            <NavLink to="/reads" text="Reading" />
+          </div>
+        </FadeWhenVisible>
+      </div>
       {/* <div className="max-w-screen-lg mx-auto gap-1 px-4 grid grid-cols-1 md:grid-cols-2 justify-between">
         {data.allMarkdownRemark.edges.map((edge, i) => {
           return (
