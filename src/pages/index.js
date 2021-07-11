@@ -26,7 +26,7 @@ const IndexPage = () => {
   React.useEffect(() => {
     const intervalId = setInterval(
       () => setIndex((index) => index + 1),
-      2500 // every 3 seconds
+      3000 // every 3 seconds
     );
     return () => clearTimeout(intervalId);
   }, []);
@@ -44,7 +44,7 @@ const IndexPage = () => {
   React.useEffect(() => {
     const interval = setInterval(() => {
       fetchNowPlaying();
-    }, 2500);
+    }, 3000);
     return () => clearInterval(interval);
   }, []);
 

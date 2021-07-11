@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import PageHeading from "../components/heading";
@@ -6,15 +6,21 @@ import Spinner from "../components/animation/loading";
 import { Dialog, Transition } from "@headlessui/react";
 import { FaSpotify } from "@react-icons/all-files/fa/FaSpotify";
 import { FiExternalLink } from "@react-icons/all-files/fi/FiExternalLink";
+import { FaPlay } from "@react-icons/all-files/fa/FaPlay";
+import { FaPause } from "@react-icons/all-files/fa/FaPause";
 
 const MusicPage = () => {
-  const [topArtist, setTopArtist] = React.useState({});
-  const [topTracks, setTopTracks] = React.useState({});
-  const [nowPlaying, setNowPlaying] = React.useState({});
-  const [isOpen, setIsOpen] = React.useState(false);
-  const [artistFocus, setArtistFocus] = React.useState({});
+  const [topArtist, setTopArtist] = useState({});
+  const [topTracks, setTopTracks] = useState({});
+  const [nowPlaying, setNowPlaying] = useState({});
+  const [isOpen, setIsOpen] = useState(false);
+  const [artistFocus, setArtistFocus] = useState({});
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [audioSrc, setAudioSrc] = useState("");
+  const [audio, setAudio] = useState(new Audio());
+  const [playIndex, setPlayIndex] = useState();
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetch(`/.netlify/functions/topartists`)
       .then((response) => response.json())
       .then((resultData) => {
@@ -25,6 +31,8 @@ const MusicPage = () => {
       .then((response) => response.json())
       .then((resultData) => {
         setTopTracks(resultData);
+        // setAudioSrc(resultData.items[0].preview_url);
+        // setAudio(new Audio(resultData.items[0].preview_url));
       });
   }, []);
 
@@ -35,12 +43,30 @@ const MusicPage = () => {
     });
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     const interval = setInterval(() => {
       fetchNowPlaying();
     }, 5000);
     return () => clearInterval(interval);
   }, []);
+
+  useEffect(() => {
+    setIsPlaying(false);
+    console.log(audioSrc);
+    setAudio(new Audio(audioSrc));
+    setTimeout(function () {
+      setIsPlaying(true);
+    }, 500);
+  }, [audioSrc]);
+
+  useEffect(() => {
+    isPlaying ? audio.play() : audio.pause();
+  }, [isPlaying]);
+
+  audio.addEventListener("ended", function () {
+    audio.currentTime = 0;
+    setIsPlaying(false);
+  });
 
   function closeModal() {
     setIsOpen(false);
@@ -131,9 +157,12 @@ const MusicPage = () => {
       <div className="md:max-w-screen-md lg:max-w-screen-lg mx-auto">
         <div className="flex flex-wrap justify-around">
           {topArtist.items ? (
-            topArtist.items.map((artist, index) => {
+            topArtist.items.map((artist, id) => {
               return (
-                <div className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 my-4 flex flex-col justify-center">
+                <div
+                  key={id}
+                  className="w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6 my-4 flex flex-col justify-center"
+                >
                   <button
                     onClick={() => {
                       openModal();
@@ -148,7 +177,7 @@ const MusicPage = () => {
                     />
                   </button>
                   <div className="text-center w-36 mx-auto">
-                    {index + 1}. {artist.name}
+                    {id + 1}. {artist.name}
                   </div>
                 </div>
               );
@@ -162,36 +191,60 @@ const MusicPage = () => {
       </div>
       <PageHeading title="Top Tracks" />
       <div className="md:max-w-screen-md lg:max-w-screen-lg mx-auto px-4">
+        {/* {console.log(isPlaying)} */}
         {topTracks.items ? (
           <div className="flex flex-wrap justify-around mx-auto pb-8">
-            {topTracks.items.map((track, index) => {
+            {topTracks.items.map((track, id) => {
               return (
-                <a
-                  href={track.external_urls.spotify}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <div
                   className="group w-full md:w-5/12 flex items-center justify-between flex-nowrap mx-2 my-2 rounded-lg hover:bg-white  hover:shadow dark:hover:bg-pink-900"
+                  key={id}
                 >
                   <div className="flex flex-row content-start">
-                    <div>
+                    <div className="relative">
                       <img
                         src={track.album.images[1].url}
                         alt={track.name}
-                        className="h-20 w-20 rounded-lg min-w-full "
+                        className="h-20 w-20 rounded-lg min-w-full"
                       />
+                      <div
+                        className="absolute inset-0 h-20 w-20 flex items-center cursor-pointer text-white group group-hover:bg-black group-hover:bg-opacity-50 rounded-lg"
+                        onClick={() => {
+                          isPlaying ? setIsPlaying(false) : setIsPlaying(true);
+                          if (audioSrc !== track.preview_url) {
+                            setIsPlaying(false);
+                            setAudioSrc(track.preview_url);
+                            setPlayIndex(id);
+                          }
+                        }}
+                      >
+                        {playIndex === id && isPlaying ? (
+                          <FaPause className="mx-auto h-10 w-10" />
+                        ) : (
+                          <FaPlay className="mx-auto opacity-0 group-hover:opacity-100 h-10 w-10" />
+                        )}
+                      </div>
                     </div>
                     <div className="px-2 max-w-xs pt-2">
-                      <div className="text-xs">{index + 1}</div>
+                      <div className="text-xs">{id + 1}</div>
                       <div className="font-semibold ">{track.name}</div>
                       <div className="font-extralight">
                         {track.album.artists[0].name}
                       </div>
                     </div>
                   </div>
-                  <div className="text-right opacity-0 group-hover:opacity-100 p-4">
-                    <FiExternalLink />
-                  </div>
-                </a>
+                  <a
+                    className="text-right md:opacity-0 group-hover:opacity-100 border-l-2 p-4"
+                    href={track.external_urls.spotify}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <FaSpotify
+                      style={{ color: "#1DB954" }}
+                      className="h-7 w-7"
+                    />
+                  </a>
+                </div>
               );
             })}
           </div>
@@ -205,7 +258,7 @@ const MusicPage = () => {
         <div className="flex justify-center sm:justify-end sticky md:mr-8 bottom-0">
           <div className="flex justify-end gap-4 items-center shadow-md text-right bg-white dark:bg-pink-900 bg-opacity-90 dark:bg-opacity-90 pl-4 pr-6 sm:pr-0 w-screen sm:max-w-max sm:mx-8">
             <div>
-              <div className="text-sm">currently listening to</div>
+              <div className="text-sm">wutsqo is currently listening to</div>
               <a
                 href={nowPlaying.item.external_urls.spotify}
                 target="_blank"
