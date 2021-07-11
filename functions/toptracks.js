@@ -37,7 +37,7 @@ exports.handler = async (event, context) => {
       console.error(err);
     });
 
-  return fetch(`${nowPlayingEndpoint}?time_range=short_term&limit=16`, {
+  return fetch(`${nowPlayingEndpoint}?time_range=short_term&limit=12`, {
     method: "GET",
     headers: {
       Authorization: `Bearer ${accessToken}`,
