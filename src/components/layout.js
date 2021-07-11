@@ -23,15 +23,15 @@ const Layout = ({ children }) => {
   `);
 
   return (
-    <>
+    <div className="dark:bg-black dark:text-gray-100 bg-pink-50">
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
-      <div className="dark:bg-black dark:text-gray-100 bg-pink-50">
-        <main className="min-h-screen ">{children}</main>
+      <div>
+        <main className="min-h-screen pt-16">{children}</main>
         <footer className="text-center text-sm p-12 z-20 relative bg-white dark:bg-black">
           © {new Date().getFullYear()}, Muhammad Urwatil Wutsqo
         </footer>
       </div>
-    </>
+    </div>
   );
 };
 

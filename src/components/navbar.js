@@ -43,11 +43,12 @@ function Nav() {
   return (
     <div>
       <nav
-        className={`fixed w-full z-50 bg-white text-gray-900 dark:text-white dark:bg-black bg-opacity-75 dark:bg-opacity-75 backdrop-filter backdrop-blur-lg shadow top-0 ${
+        className={`fixed z-50 bg-white text-gray-900 dark:text-white dark:bg-black bg-opacity-75 dark:bg-opacity-75 backdrop-filter backdrop-blur-lg shadow top-0 ${
           visible
             ? "transition duration-500"
             : "transform -translate-y-56 transition duration-1000 delay-500"
         }`}
+        style={{ width: "100vw" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">

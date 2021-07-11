@@ -4,7 +4,7 @@ const PageHeading = ({ title, align }) => {
   return (
     <div>
       <h1
-        className={`text-4xl py-4 pt-24 mb-6 text-${
+        className={`text-4xl py-4 pt-12 mb-6 text-${
           align ? align : "center"
         } font-semibold`}
       >
