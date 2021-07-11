@@ -1,11 +1,10 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import PageHeading from "../components/heading";
 import Spinner from "../components/animation/loading";
 import { Dialog, Transition } from "@headlessui/react";
 import { FaSpotify } from "@react-icons/all-files/fa/FaSpotify";
-import { FiExternalLink } from "@react-icons/all-files/fi/FiExternalLink";
 import { FaPlay } from "@react-icons/all-files/fa/FaPlay";
 import { FaPause } from "@react-icons/all-files/fa/FaPause";
 
@@ -20,7 +19,7 @@ const MusicPage = () => {
   const [audio, setAudio] = useState();
   const [playIndex, setPlayIndex] = useState();
 
-  if (typeof Audio != "undefined") {
+  if (audio) {
     audio.addEventListener("ended", function () {
       audio.currentTime = 0;
       setIsPlaying(false);
@@ -57,15 +56,16 @@ const MusicPage = () => {
 
   useEffect(() => {
     setIsPlaying(false);
-    console.log(audioSrc);
     setAudio(new Audio(audioSrc));
     setTimeout(function () {
       setIsPlaying(true);
-    }, 500);
+    }, 1000);
   }, [audioSrc]);
 
   useEffect(() => {
-    isPlaying ? audio.play() : audio.pause();
+    if (audio) {
+      isPlaying ? audio.play() : audio.pause();
+    }
   }, [isPlaying]);
 
   function closeModal() {
