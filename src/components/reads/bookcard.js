@@ -3,6 +3,7 @@ import tw from "twin.macro";
 import StarRatings from "react-star-ratings";
 import { Link } from "gatsby";
 import { GatsbyImage } from "gatsby-plugin-image";
+import FadeWhenVisible from "../animation/fadewhenvisible";
 
 const BookCard = ({ data, link }) => {
   const Container = tw.div`mb-2 p-2 dark:bg-pink-900 shadow rounded`;
@@ -38,15 +39,17 @@ const BookCard = ({ data, link }) => {
       <Container>
         <ThumbContainer>
           <ThumbCover>
-            {data.cover ? (
-              <GatsbyImage
-                image={data.cover.childImageSharp.gatsbyImageData}
-                alt={data.title}
-                className="h-full rounded"
-              />
-            ) : (
-              "no image"
-            )}
+            <FadeWhenVisible>
+              {data.cover ? (
+                <GatsbyImage
+                  image={data.cover.childImageSharp.gatsbyImageData}
+                  alt={data.title}
+                  className="h-full rounded"
+                />
+              ) : (
+                "no image"
+              )}
+            </FadeWhenVisible>
           </ThumbCover>
           <ThumbOverlay>
             <div>{data.title}</div>

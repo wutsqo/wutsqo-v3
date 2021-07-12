@@ -5,7 +5,6 @@ import { debounce, throttle } from "throttle-debounce";
 import BookCard from "../components/reads/bookcard";
 import PageHeading from "../components/heading";
 import SEO from "../components/seo";
-import FadeWhenVisible from "../components/animation/fadewhenvisible";
 
 export const query = graphql`
   query bookQuery($skip: Int!, $limit: Int!) {
@@ -77,13 +76,11 @@ const ReadingList = (props) => {
                   className="my-1 px-1 overflow-hidden w-1/2 sm:w-1/3 md:w-1/4 lg:w-1/6"
                   key={id}
                 >
-                  <FadeWhenVisible>
-                    <BookCard
-                      data={edge.node.frontmatter}
-                      link={`/reads/${edge.node.fields.slug}`}
-                      id={id}
-                    />
-                  </FadeWhenVisible>
+                  <BookCard
+                    data={edge.node.frontmatter}
+                    link={`/reads/${edge.node.fields.slug}`}
+                    id={id}
+                  />
                 </div>
               );
             })}
