@@ -7,6 +7,9 @@ import { Dialog, Transition } from "@headlessui/react";
 import { FaSpotify } from "@react-icons/all-files/fa/FaSpotify";
 import { FaPlay } from "@react-icons/all-files/fa/FaPlay";
 import { FaPause } from "@react-icons/all-files/fa/FaPause";
+import { FiExternalLink } from "@react-icons/all-files/fi/FiExternalLink";
+import Humanize from "humanize-plus";
+import { Span } from "opentracing";
 
 const MusicPage = () => {
   const [topArtist, setTopArtist] = useState({});
@@ -129,10 +132,20 @@ const MusicPage = () => {
                         <div className="text-4xl font-semibold">
                           {artistFocus.name}
                         </div>
+                        <div className="mt-1 font-light text-sm">
+                          {Humanize.compactInteger(
+                            artistFocus.followers.total,
+                            2
+                          )}{" "}
+                          followers.
+                        </div>
                         <div className="mt-4 gap-1 flex flex-wrap">
-                          {artistFocus.genres.map((genre) => {
+                          {artistFocus.genres.map((genre, id) => {
                             return (
-                              <button className="inline-flex justify-center px-2 py-1 text-sm text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500">
+                              <button
+                                key={id}
+                                className="inline-flex justify-center px-2 py-1 text-sm text-blue-900 bg-blue-100 border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 cursor-default"
+                              >
                                 {genre}
                               </button>
                             );
@@ -175,9 +188,10 @@ const MusicPage = () => {
                     className="focus:outline-none"
                   >
                     <img
+                      title={`${artist.name}'s info`}
                       src={artist.images[2].url}
                       alt={artist.name}
-                      className="h-32 w-32 mx-auto rounded-2xl"
+                      className="h-32 w-32 mx-auto rounded-2xl shadow hover:shadow-lg"
                     />
                   </button>
                   <div className="text-center w-36 mx-auto">
@@ -212,6 +226,7 @@ const MusicPage = () => {
                         className="h-20 w-20 rounded-lg min-w-full"
                       />
                       <div
+                        title="Listen preview"
                         className="absolute inset-0 h-20 w-20 flex items-center cursor-pointer text-white group group-hover:bg-black group-hover:bg-opacity-50 rounded-lg"
                         onClick={() => {
                           isPlaying ? setIsPlaying(false) : setIsPlaying(true);
@@ -223,21 +238,31 @@ const MusicPage = () => {
                         }}
                       >
                         {playIndex === id && isPlaying ? (
-                          <FaPause className="mx-auto h-10 w-10" />
+                          <FaPause className="mx-auto h-8 w-8" />
                         ) : (
-                          <FaPlay className="mx-auto opacity-0 group-hover:opacity-100 h-10 w-10" />
+                          <FaPlay className="mx-auto opacity-0 group-hover:opacity-75 h-8 w-8" />
                         )}
                       </div>
                     </div>
                     <div className="px-2 max-w-xs pt-2">
                       <div className="text-xs">{id + 1}</div>
                       <div className="font-semibold ">{track.name}</div>
-                      <div className="font-extralight">
-                        {track.album.artists[0].name}
+                      <div className="font-light">
+                        {track.album.artists.map((artist, id) => {
+                          return (
+                            <span key={id} className="font-extralight">
+                              {artist.name}
+                              {id < track.album.artists.length - 1
+                                ? ",\u00A0"
+                                : ""}
+                            </span>
+                          );
+                        })}
                       </div>
                     </div>
                   </div>
                   <a
+                    title="Listen on Spotify"
                     className="text-right md:opacity-0 group-hover:opacity-100 border-l-2 p-4"
                     href={track.external_urls.spotify}
                     target="_blank"
@@ -245,8 +270,11 @@ const MusicPage = () => {
                   >
                     <FaSpotify
                       style={{ color: "#1DB954" }}
-                      className="h-7 w-7"
+                      className="h-7 w-7 mx-auto"
                     />
+                    <div className="flex text-xs font-thin items-center mt-1">
+                      Listen <FiExternalLink />
+                    </div>
                   </a>
                 </div>
               );
@@ -278,7 +306,14 @@ const MusicPage = () => {
                 rel="noopener noreferrer"
                 className="font-light"
               >
-                {nowPlaying.item.artists[0].name}
+                {nowPlaying.item.artists.map((artist, id) => {
+                  return (
+                    <span key={id} className="font-light">
+                      {artist.name}
+                      {id < nowPlaying.item.artists.length - 1 ? ",\u00A0" : ""}
+                    </span>
+                  );
+                })}
               </a>
             </div>
             <a

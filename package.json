@@ -27,6 +27,7 @@
     "gatsby-source-filesystem": "^3.0.0",
     "gatsby-transformer-remark": "^4.1.0",
     "gatsby-transformer-sharp": "^3.0.0",
+    "humanize-plus": "^1.8.2",
     "moment": "^2.29.1",
     "node-fetch": "^2.6.1",
     "prop-types": "^15.7.2",
