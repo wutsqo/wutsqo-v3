@@ -48,9 +48,13 @@ const MusicPage = () => {
   }
 
   useEffect(() => {
+    fetchNowPlaying();
+  }, []);
+
+  useEffect(() => {
     const interval = setInterval(() => {
       fetchNowPlaying();
-    }, 5000);
+    }, 10000);
     return () => clearInterval(interval);
   }, []);
 
