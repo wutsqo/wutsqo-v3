@@ -9,7 +9,7 @@ import { FaPlay } from "@react-icons/all-files/fa/FaPlay";
 import { FaPause } from "@react-icons/all-files/fa/FaPause";
 import { FiExternalLink } from "@react-icons/all-files/fi/FiExternalLink";
 import Humanize from "humanize-plus";
-import { Span } from "opentracing";
+import { MdClose } from "@react-icons/all-files/md/MdClose";
 
 const MusicPage = () => {
   const [topArtist, setTopArtist] = useState({});
@@ -120,12 +120,12 @@ const MusicPage = () => {
                 leaveFrom="opacity-100 scale-100"
                 leaveTo="opacity-0 scale-95"
               >
-                <div className="inline-block w-full max-w-xl p-4 my-8 text-left align-middle transition-all transform bg-pink-50 dark:bg-black text-black dark:text-pink-100 rounded-2xl">
+                <div className="inline-block w-full max-w-2xl p-4 my-8 text-left align-middle transition-all transform bg-pink-50 dark:bg-black text-black dark:text-pink-100 rounded-2xl">
                   <div className="flex flex-col sm:flex-row">
                     <img
                       src={artistFocus.images[0].url}
                       alt={artistFocus.name}
-                      className="rounded-2xl h-80 object-cover "
+                      className="rounded-2xl h-auto max-h-80 md:max-h-96 object-cover "
                     />
                     <div className="px-2 md:pl-4">
                       <div className="mt-2">
@@ -150,16 +150,24 @@ const MusicPage = () => {
                               </button>
                             );
                           })}
-                          <a
-                            className="inline-flex md:absolute md:bottom-6 items-center justify-center px-2 py-1 text-sm text-white border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
-                            style={{ backgroundColor: "#1DB954" }}
-                            href={artistFocus.external_urls.spotify}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            <FaSpotify className="mr-2" />
-                            view on spotify
-                          </a>
+                          <div className="flex gap-1 sm:absolute sm:bottom-6">
+                            <a
+                              className="inline-flex  items-center justify-center px-2 py-1 text-sm text-white border border-transparent rounded-md hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500"
+                              style={{ backgroundColor: "#1DB954" }}
+                              href={artistFocus.external_urls.spotify}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              <FaSpotify className="mr-2" />
+                              view on spotify
+                            </a>
+                            <div
+                              onClick={closeModal}
+                              className="inline-flex items-center justify-center px-2 py-1 text-sm text-white border border-transparent rounded-md bg-red-500 hover:bg-red-600 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-blue-500 cursor-pointer"
+                            >
+                              <MdClose />
+                            </div>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -209,7 +217,6 @@ const MusicPage = () => {
       </div>
       <PageHeading title="Top Tracks" />
       <div className="md:max-w-screen-md lg:max-w-screen-lg mx-auto px-4">
-        {/* {console.log(isPlaying)} */}
         {topTracks.items ? (
           <div className="flex flex-wrap justify-around mx-auto pb-8">
             {topTracks.items.map((track, id) => {
@@ -244,10 +251,10 @@ const MusicPage = () => {
                         )}
                       </div>
                     </div>
-                    <div className="px-2 max-w-xs pt-2">
+                    <div className="px-2 max-w-xs pt-2 truncate">
                       <div className="text-xs">{id + 1}</div>
-                      <div className="font-semibold ">{track.name}</div>
-                      <div className="font-light">
+                      <div className="font-semibold">{track.name}</div>
+                      <div className="font-light truncate">
                         {track.album.artists.map((artist, id) => {
                           return (
                             <span key={id} className="font-extralight">
