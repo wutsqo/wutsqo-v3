@@ -3,6 +3,8 @@ import { ThemeToggler } from "gatsby-plugin-dark-mode";
 import useSound from "use-sound";
 import onSfx from "../sounds/switch-on.mp3";
 import offSfx from "../sounds/switch-off.mp3";
+import sun from "../images/sun.svg";
+import moon from "../images/moon.svg";
 
 export default function ThemeToggle() {
   const [on] = useSound(onSfx);
@@ -25,7 +27,7 @@ export default function ThemeToggle() {
                   : "translate-y-4 opacity-0 rotate-45"
               } transition duration-500 ease-in-out transform`}
             >
-              ☀️
+              <img src={sun} alt="sun" className="h-8 p-1" />
             </div>
 
             <div
@@ -35,7 +37,7 @@ export default function ThemeToggle() {
                   : "translate-y-4 opacity-0 rotate-45"
               } transition duration-500 ease-in-out transform`}
             >
-              🌙
+              <img src={moon} alt="moon" className="h-8 p-1" />
             </div>
           </button>
         </div>

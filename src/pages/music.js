@@ -216,7 +216,7 @@ const MusicPage = () => {
         </div>
       </div>
       <PageHeading title="Top Tracks" />
-      <div className="md:max-w-screen-md lg:max-w-screen-lg mx-auto px-4">
+      <div className="lg:max-w-screen-lg mx-auto px-4">
         {topTracks.items ? (
           <div className="flex flex-wrap justify-around mx-auto pb-8">
             {topTracks.items.map((track, id) => {

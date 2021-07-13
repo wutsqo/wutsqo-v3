@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Transition } from "@headlessui/react";
 import { Link } from "gatsby";
 import ThemeToggle from "./themetoggle";
-import { debounce, throttle } from "throttle-debounce";
+import { debounce } from "throttle-debounce";
 
 export const NavLink = ({ to, text }) => {
   return (
@@ -43,12 +43,11 @@ function Nav() {
   return (
     <div>
       <nav
-        className={`fixed z-50 bg-white text-gray-900 dark:text-white dark:bg-black bg-opacity-75 dark:bg-opacity-75 backdrop-filter backdrop-blur-lg shadow top-0 ${
+        className={`fixed w-screen z-50 bg-white text-gray-900 dark:text-white dark:bg-black bg-opacity-75 dark:bg-opacity-75 backdrop-filter backdrop-blur-lg shadow top-0 ${
           visible
             ? "transition duration-500"
             : "transform -translate-y-56 transition duration-1000 delay-500"
         }`}
-        style={{ width: "100vw" }}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
@@ -140,7 +139,7 @@ function Nav() {
           leaveTo="opacity-0 scale-95"
         >
           <div className="md:hidden" id="mobile-menu">
-            <div className="px-4 pt-2 pb-3 flex flex-col">
+            <div className="px-4 pt-2 pb-3 flex flex-col text-center">
               <NavLink to="/" text="Home" />
               <NavLink to="/about" text="About" />
               <NavLink to="/blog" text="Posts" />
