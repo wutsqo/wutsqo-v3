@@ -6,7 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image";
 import FadeWhenVisible from "../animation/fadewhenvisible";
 
 const BookCard = ({ data, link }) => {
-  const Container = tw.div`mb-2 p-2 dark:bg-pink-900 shadow rounded`;
+  const Container = tw.div`mb-2 p-2 bg-white dark:bg-pink-900 shadow rounded`;
   const ThumbContainer = tw.div`relative h-60 w-full rounded`;
   const ThumbCover = tw.div`absolute inset-0 bg-cover bg-center z-0 rounded`;
   const ThumbOverlay = tw.div`opacity-0 hover:opacity-90 hover:bg-black duration-300 absolute 
