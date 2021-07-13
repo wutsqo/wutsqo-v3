@@ -8,7 +8,7 @@ export const NavLink = ({ to, text }) => {
   return (
     <Link
       to={to}
-      className="py-2 my-2 rounded px-2 mx-1 text-lg no-underline bg-transparent"
+      className="py-2 my-2 rounded px-2 mx-1 text-lg no-underline bg-transparent hover:bg-pink-100 dark:hover:bg-pink-800"
       activeClassName="bg-pink-200 dark:bg-pink-900 dark:text-white text-black"
     >
       {text}
