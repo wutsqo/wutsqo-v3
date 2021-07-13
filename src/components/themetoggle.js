@@ -1,25 +1,43 @@
 import React from "react";
 import { ThemeToggler } from "gatsby-plugin-dark-mode";
-import { Switch } from "@headlessui/react";
+import useSound from "use-sound";
+import onSfx from "../sounds/switch-on.mp3";
+import offSfx from "../sounds/switch-off.mp3";
 
 export default function ThemeToggle() {
+  const [on] = useSound(onSfx);
+  const [off] = useSound(offSfx);
   return (
     <ThemeToggler>
       {({ theme, toggleTheme }) => (
         <div>
-          <Switch
-            onChange={(e) => toggleTheme(theme === "light" ? "dark" : "light")}
-            className={`${
-              theme === "dark" ? "bg-pink-900" : "bg-gray-200"
-            } relative inline-flex items-center h-6 rounded-full w-11 focus:outline-none`}
+          <button
+            className="focus:outline-none text-2xl h-9 w-9 flex items-center justify-center text-center"
+            onClick={() => {
+              theme === "dark" ? on() : off();
+              toggleTheme(theme === "light" ? "dark" : "light");
+            }}
           >
-            <span className="sr-only">Enable Dark Theme</span>
-            <span
-              className={`${
-                theme === "dark" ? "translate-x-6" : "translate-x-1"
-              } inline-block w-4 h-4 transform bg-white rounded-full`}
-            />
-          </Switch>
+            <div
+              className={`absolute ${
+                theme === "light"
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-4 opacity-0 rotate-45"
+              } transition duration-500 ease-in-out transform`}
+            >
+              ☀️
+            </div>
+
+            <div
+              className={`absolute ${
+                theme === "dark"
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-4 opacity-0 rotate-45"
+              } transition duration-500 ease-in-out transform`}
+            >
+              🌙
+            </div>
+          </button>
         </div>
       )}
     </ThemeToggler>
