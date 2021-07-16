@@ -24,7 +24,7 @@ export const query = graphql`
             bookAuthor
             cover {
               childImageSharp {
-                gatsbyImageData(layout: FULL_WIDTH, placeholder: BLURRED)
+                gatsbyImageData(layout: FULL_WIDTH, placeholder: DOMINANT_COLOR)
               }
             }
             bookRating
