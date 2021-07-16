@@ -270,7 +270,7 @@ const MusicPage = () => {
                   </div>
                   <a
                     title="Listen on Spotify"
-                    className="text-right md:opacity-0 group-hover:opacity-100 border-l-2 p-4"
+                    className="text-right opacity-0 group-hover:opacity-100 border-l-2 p-4"
                     href={track.external_urls.spotify}
                     target="_blank"
                     rel="noopener noreferrer"
